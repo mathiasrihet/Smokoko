@@ -40,7 +40,7 @@ export default class Pet extends React.Component {
           `}
                 </style>
                     <div className="pet">
-                        <img className="pet-img" src={char}/>
+                        <img className="pet-img" src={char3}/>
                     </div>
                 </div>
         )
