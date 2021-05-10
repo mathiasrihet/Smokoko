@@ -1,6 +1,5 @@
 import React from 'react';
-import gameBackground from '../assets/gameBackground.gif';
-import char from '../assets/char.png';
+import char from '../assets/char3.png';
 
 
 export default class Pet extends React.Component {
@@ -40,7 +39,7 @@ export default class Pet extends React.Component {
           `}
                 </style>
                     <div className="pet">
-                        <img className="pet-img" src={char3}/>
+                        <img className="pet-img" src={char}/>
                     </div>
                 </div>
         )

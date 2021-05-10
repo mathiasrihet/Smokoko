@@ -1,5 +1,5 @@
 import React from 'react';
-import gameBackground from '../assets/gameBackground.gif';
+import gameBackground from '../assets/gameBackground.png';
 import Pet from './Pet';
 
 
