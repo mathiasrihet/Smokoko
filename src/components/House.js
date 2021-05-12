@@ -8,7 +8,10 @@ export default class House extends React.Component {
         super(props);
         this.state = {
             smoke: 50,
-            petIsAlive: true
+            petIsAlive: true,
+            hungerLevel : 100,
+            sleepLevel : 100,
+            playLevel : 100,
         };
     }
 
@@ -18,15 +21,16 @@ export default class House extends React.Component {
                 <style jsx>
                 {`
                 .pet-area {
-                    position: absolute;
-                    height: 300px;
-                    width: 800px;
-                    top: 26px;
-                    left: 85px;
+                    position: relative;
+                    height: 100%;
+                    width: 100%;
+                    top: 33%;
+                    left: 0%;
                 }
                 .pet-area-img {
-                    height: 447px;
-                    width: 586px;
+                    position : relative;
+                    height: 100%;
+                    width: 75%;
                     z-index: 0;
                 }
                 .button-container {
@@ -37,12 +41,12 @@ export default class House extends React.Component {
                 .button {
                     margin: 10px;
                 }
-          `}
+                `}
                 </style>
             <div>
                 <div>
-                    <Pet />
-                    <div className="pet-area">
+                    <div className="pet-area">   
+                        <Pet />
                         <img className="pet-area-img" src={gameBackground}/>
                     </div>
                 </div>
