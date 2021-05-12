@@ -25,7 +25,7 @@ export default class House extends React.Component {
         };
     }
 
-<<<<<<< HEAD
+
     getScore(){
         /*return a score between 0 and 1 reflecting user performance*/
     }
@@ -93,14 +93,10 @@ export default class House extends React.Component {
         
     }
 
-     render(){
-=======
-    handle_this = () => {
-        alert('click')
-    }
+    
 
     render(){
->>>>>>> 21a0d3f1b037b8ed50b01262a9c30c905af975aa
+       
         return(
             <div>
                 <style jsx>
@@ -129,13 +125,13 @@ export default class House extends React.Component {
                 `}
                 </style>
                 <div>
-<<<<<<< HEAD
                     <div>
                         <div className="pet-area">   
                             <Pet />
                             <img className="pet-area-img" src={gameBackground}/>
                         </div>
                     </div>
+                    
                     <div className="button-container">
                         <div className="button">
                             <Gauge value={this.state.playLevel} label={'Plaisir'} colorRange={["#dbe7db", "#48d634"]}/>
@@ -148,27 +144,8 @@ export default class House extends React.Component {
                         <div className="button">
                             <Gauge value={this.state.sleepLevel} label={'Energie'} colorRange={["#e7dbdb", "#d44834"]}/>
                             <MyButton type='dormir' handleThis={this.onClickSleep}/>
-                        </div>
-=======
-                    <div className="pet-area">   
-                        <Pet />
-                        <img className="pet-area-img" src={gameBackground}/>
-                    </div>
-                </div>
-                <div className="button-container">
-                    <div className="button">
-                        <Gauge value={this.state.playLevel} label={'Plaisir'} colorRange={["#dbe7db", "#48d634"]}/>
-                        <MyButton type='Jouer' handleThis={this.handle_this}/>
-                    </div>
-                    <div className="button">
-                        <Gauge value={this.state.hungerLevel} label={'Faim'} colorRange={["#dbdbe7", "#4834d4"]}/>
-                        <MyButton type='Manger' handleThis={this.handle_this}/>
-                    </div>
-                    <div className="button">
-                        <Gauge value={this.state.sleepLevel} label={'Energie'} colorRange={["#e7dbdb", "#d44834"]}/>
-                        <MyButton type='Dormir' handleThis={this.handle_this}/>
->>>>>>> 21a0d3f1b037b8ed50b01262a9c30c905af975aa
-                    </div>
+                        </div> 
+                    </div> 
                 </div>
             </div>
         )
