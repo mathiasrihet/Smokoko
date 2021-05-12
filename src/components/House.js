@@ -74,7 +74,7 @@ export default class House extends React.Component {
     }
 
     onClickSleep = () => {
-
+        this.setState({sleepLevel : this.state.sleepLevel + 10});
     }
 
     onClickFeed = () => {
@@ -84,6 +84,8 @@ export default class House extends React.Component {
 
     onClickPlay = () => {
         /*Make the play level increase and the energy level decrease*/
+        this.setState({playLevel : Math.min(this.state.playLevel + 10, 100)});
+        this.setState({sleepLevel : Math.max(this.state.sleepLevel - 10, 0)});
         if (Math.random() < this.getScore()){
             this.setState({playLevel : Math.min(this.state.playLevel + 10, 100)});
             this.setState({sleepLevel : Math.max(this.state.sleepLevel - 10, 0)});
