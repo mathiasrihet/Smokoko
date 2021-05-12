@@ -16,8 +16,8 @@ export default class House extends React.Component {
         };
     }
 
-    handle_this = (e) => {
-        return(e)
+    handle_this = () => {
+        alert('click')
     }
 
     render(){
