@@ -1,5 +1,5 @@
 import React from 'react';
-import char from '../assets/char3.png';
+import char from '../assets/m2.png';
 
 
 export default class Pet extends React.Component {
