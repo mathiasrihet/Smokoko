@@ -58,16 +58,16 @@ export default class House extends React.Component {
                 </div>
                 <div className="button-container">
                     <div className="button">
-                        <MyButton type='Jouer' handleThis={this.handle_this}/>
                         <Gauge value={this.state.playLevel} label={'Plaisir'} colorRange={["#dbe7db", "#48d634"]}/>
+                        <MyButton type='Jouer' handleThis={this.handle_this}/>
                     </div>
                     <div className="button">
+                        <Gauge value={this.state.hungerLevel} label={'Faim'} colorRange={["#dbdbe7", "#4834d4"]}/>
                         <MyButton type='Manger' handleThis={this.handle_this}/>
-                        <Gauge value={50} label={'Faim'} colorRange={["#dbdbe7", "#4834d4"]}/>
                     </div>
                     <div className="button">
+                        <Gauge value={this.state.sleepLevel} label={'Energie'} colorRange={["#e7dbdb", "#d44834"]}/>
                         <MyButton type='Dormir' handleThis={this.handle_this}/>
-                        <Gauge value={80} label={'Energie'} colorRange={["#e7dbdb", "#d44834"]}/>
                     </div>
                 </div>
             </div>
