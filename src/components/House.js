@@ -2,6 +2,7 @@ import React from 'react';
 import gameBackground from '../assets/gameBackground.png';
 import Pet from './Pet';
 import MyButton from './MyButton'
+import Gauge from './Gauge'
 
 
 export default class House extends React.Component {
@@ -57,13 +58,16 @@ export default class House extends React.Component {
                 </div>
                 <div className="button-container">
                     <div className="button">
-                        <MyButton type='plaisir' handleThis={this.handle_this}/>
+                        <MyButton type='Jouer' handleThis={this.handle_this}/>
+                        <Gauge value={this.state.playLevel} label={'Plaisir'} colorRange={["#dbe7db", "#48d634"]}/>
                     </div>
                     <div className="button">
-                        <button>Dormir</button>
+                        <MyButton type='Manger' handleThis={this.handle_this}/>
+                        <Gauge value={50} label={'Faim'} colorRange={["#dbdbe7", "#4834d4"]}/>
                     </div>
                     <div className="button">
-                        <button>Manger</button>
+                        <MyButton type='Dormir' handleThis={this.handle_this}/>
+                        <Gauge value={80} label={'Energie'} colorRange={["#e7dbdb", "#d44834"]}/>
                     </div>
                 </div>
             </div>
