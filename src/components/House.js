@@ -1,6 +1,7 @@
 import React from 'react';
 import gameBackground from '../assets/gameBackground.png';
 import Pet from './Pet';
+import MyButton from './MyButton'
 
 
 export default class House extends React.Component {
@@ -13,6 +14,10 @@ export default class House extends React.Component {
             sleepLevel : 100,
             playLevel : 100,
         };
+    }
+
+    handle_this = (e) => {
+        return(e)
     }
 
     render(){
@@ -52,7 +57,7 @@ export default class House extends React.Component {
                 </div>
                 <div className="button-container">
                     <div className="button">
-                        <button>Jouer</button>
+                        <MyButton type='plaisir' handleThis={this.handle_this}/>
                     </div>
                     <div className="button">
                         <button>Dormir</button>
