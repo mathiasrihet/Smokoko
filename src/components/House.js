@@ -62,10 +62,13 @@ export default class House extends React.Component {
         this.setState({lastUpdateTime : time,});
         
         this.updateHunger(timeSinceUpdate);
-        if (this.getTime() > this.state.timeToBed){this.updateSleep(timeSinceUpdate);}
+        if (this.getTime() > this.state.timeToBed){
+            this.updateSleep(timeSinceUpdate);
+            this.setState({feeling : "normal"})
+        }
         this.updatePlay(timeSinceUpdate);
 
-        //Update le feeling aussi
+        //Update le feeling angry
     }
 
     updateHunger(timeSinceUpdate){
@@ -101,17 +104,22 @@ export default class House extends React.Component {
         /*
         alpha : a parameter that defines how much the sleep is good depending on smoke quantity
         */
-        if (this.getTime() < this.state.timeToBed){return null;}
+        if (this.getTime() < this.state.timeToBed){
+            return null;
+        }
 
         let alpha = (100 - this.state.smoke) / 100
         this.setState({sleepLevel : this.state.sleepLevel + alpha * (100 - this.state.sleepLevel)});
         //Rend le pet indispo pendant 2 heures 
         this.setState({timeToBed : this.getTime() + this.hoursToMs(2)});
+        this.setState({feeling : "sleepy"});
     }
 
     onClickFeed = () => {
         /*Make the hunger level increase*/
-        if (this.getTime() < this.state.timeToBed){return null;}
+        if (this.getTime() < this.state.timeToBed){
+            return null;
+        }
 
         this.setState({hungerLevel : Math.min(this.state.hungerLevel + 10, 100)});
     }
