@@ -89,12 +89,15 @@ export default function Gauge (props) {
       </svg>
 
       {!!props.label && (
-        <img style={{
-          height: "10%"
-          
-        }}src = {props.logo}>
-          
-        </img>
+        <div style={{
+          color: props.colorRange[1],
+          marginTop: "-1.5em",
+          fontSize: "1.3em",
+          lineHeight: "1.3em",
+          fontWeight: "700",
+        }}>
+          { props.label }
+        </div>
       )}
     </div>
   )

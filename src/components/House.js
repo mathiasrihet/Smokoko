@@ -25,19 +25,25 @@ export default class House extends React.Component {
             decreaseRatePlay : 25,
             decreaseRateSmoke : 25,
             lastUpdateTime : d.getTime(),
+            speed : 1,
         };
     }
 
 
     getScore(){
         /*return a score between 0 and 1 reflecting user performance*/
+        return 1
+    }
+
+    msToHours(ms){
+        return ms / (3600 * 1000)
     }
 
     updateLevels(){
         let d = new Date();
         let time = d.getTime();
         
-        const timeSinceUpdate = time - this.state.lastUpdateTime;
+        const timeSinceUpdate = this.msToHours(time - this.state.lastUpdateTime);
         //Convert it depending on units of decrease selected
         
         this.setState({lastUpdateTime : time,});
@@ -52,7 +58,7 @@ export default class House extends React.Component {
         Make hungerLevel decrease depending on smoking quantity
         timeSinceUpdate is expressed in hours
         */
-        this.setState({hungerLevel : Math.max(this.state.hungerLevel - this.state.decreaseRateHunger * timeSinceUpdate, 0)});
+        this.setState({hungerLevel : Math.max(this.state.hungerLevel (- this.state.decreaseRateHunger * this.state.speed) * timeSinceUpdate, 0)});
     }
 
     updateSleep(timeSinceUpdate){
@@ -77,7 +83,11 @@ export default class House extends React.Component {
     }
 
     onClickSleep = () => {
-        this.setState({sleepLevel : this.state.sleepLevel + 10});
+        /*
+        alpha : a parameter that defines how much the sleep is good depending on smoke quantity
+        */
+        let alpha = (100 - this.state.smoke) / 100
+        this.setState({sleepLevel : this.state.sleepLevel + alpha * (100 - this.this.state.sleepLevel))});
     }
 
     onClickFeed = () => {
@@ -87,8 +97,6 @@ export default class House extends React.Component {
 
     onClickPlay = () => {
         /*Make the play level increase and the energy level decrease*/
-        this.setState({playLevel : Math.min(this.state.playLevel + 10, 100)});
-        this.setState({sleepLevel : Math.max(this.state.sleepLevel - 10, 0)});
         if (Math.random() < this.getScore()){
             this.setState({playLevel : Math.min(this.state.playLevel + 10, 100)});
             this.setState({sleepLevel : Math.max(this.state.sleepLevel - 10, 0)});
