@@ -21,9 +21,9 @@ export default class House extends React.Component {
             playLevel : 100,
             smokingScore: 1,
             timeToBed : 0,
-            decreaseRateEnergy : 25,
-            decreaseRateHunger : 25,
-            decreaseRatePlay : 25,
+            decreaseRateEnergy : 10000,
+            decreaseRateHunger : 10000,
+            decreaseRatePlay : 10000,
             decreaseRateSmoke : 25,
             lastUpdateTime : d.getTime(),
             speed : 1,
@@ -49,6 +49,10 @@ export default class House extends React.Component {
         return new Date().getTime();
     }
 
+    componentDidMount() {
+        this.updateInterval = setInterval(() => this.updateLevels(), 1000);
+    }
+
     updateLevels(){
         let time = this.getTime();
         
@@ -58,7 +62,7 @@ export default class House extends React.Component {
         this.setState({lastUpdateTime : time,});
         
         this.updateHunger(timeSinceUpdate);
-        this.updateSleep(timeSinceUpdate);
+        if (this.getTime() > this.state.timeToBed){this.updateSleep(timeSinceUpdate);}
         this.updatePlay(timeSinceUpdate);
 
         //Update le feeling aussi
@@ -69,7 +73,7 @@ export default class House extends React.Component {
         Make hungerLevel decrease depending on smoking quantity
         timeSinceUpdate is expressed in hours
         */
-        this.setState({hungerLevel : Math.max(this.state.hungerLevel (- this.state.decreaseRateHunger) * timeSinceUpdate * this.state.speed, 0)});
+        this.setState({hungerLevel : Math.max(this.state.hungerLevel - this.state.decreaseRateHunger * timeSinceUpdate * this.state.speed, 0)});
     }
 
     updateSleep(timeSinceUpdate){
@@ -101,6 +105,7 @@ export default class House extends React.Component {
 
         let alpha = (100 - this.state.smoke) / 100
         this.setState({sleepLevel : this.state.sleepLevel + alpha * (100 - this.state.sleepLevel)});
+        //Rend le pet indispo pendant 2 heures 
         this.setState({timeToBed : this.getTime() + this.hoursToMs(2)});
     }
 
@@ -127,7 +132,7 @@ export default class House extends React.Component {
     
 
     render(){
-       
+        
         return(
             <div className="wrapper">
                {/*  <style jsx>
