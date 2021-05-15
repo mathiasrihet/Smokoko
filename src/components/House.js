@@ -1,6 +1,7 @@
 import React from 'react';
 import gameBackground from '../assets/gameBackground.png';
 import Faim_logo from '../assets/Faim_logo.png';
+import Energie_logo from '../assets/Energie_logo.png';
 import Pet from './Pet';
 import MyButton from './MyButton'
 import Gauge from './Gauge'
@@ -158,7 +159,7 @@ export default class House extends React.Component {
                             <MyButton type='manger' handleThis={this.onClickFeed}/>
                         </div>
                         <div className="button">
-                            <Gauge value={this.state.sleepLevel} label = {'Energie'} colorRange={["#dbdbe7", "#4834d4"]}/>
+                            <Gauge value={this.state.sleepLevel} label = {'Energie'} logo = {Energie_logo} colorRange={["#dbdbe7", "#4834d4"]}/>
                             <MyButton type='dormir' handleThis={this.onClickSleep}/>
                         </div> 
                     </div> 

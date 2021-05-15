@@ -90,12 +90,8 @@ export default function Gauge (props) {
 
       {!!props.label && (
         <img style={{
-          color: props.colorRange[1],
-          marginTop: "-1.5em",
-          fontSize: "1.3em",
-          lineHeight: "1.3em",
-          fontWeight: "700",
           height: "10%"
+          
         }}src = {props.logo}>
           
         </img>
