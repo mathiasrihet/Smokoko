@@ -1,0 +1,45 @@
+.wrapper{
+    background-color: #F3F3F3;
+    text-align: center;
+    height: 100vh;
+    margin:0px;
+    min-width: 370px;
+    
+   
+    
+}
+.pet-area {
+    position: relative;
+    background-color: #F3F3F3;
+    top: 33%;
+    left: 0%;
+   
+    
+}
+.pet-area-img {
+    height: 70%;
+    width: 80%;
+
+  
+
+   
+    z-index: 0;
+    
+}
+
+.button-container {
+   height: 30vw;
+    width: 100vw;
+    
+    
+} 
+.button {
+                display: inline-grid;
+                
+                font-size: 5vw;
+                background-color: white;
+                height: 0vw;
+                width: 30vw;
+        }
+
+        

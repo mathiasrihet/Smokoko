@@ -1,0 +1,19 @@
+.banner {
+                    
+    background-color: white;
+       width: 100vw;
+       height: 20vw;
+       text-align:center;
+       min-height:15vw;
+
+    }
+    .banner-img {
+        min-height: 20vw;
+        height: 15vw;
+        width: 25vw;
+        min-width: 35vw;
+        z-index: 0;
+        
+    }
+
+   

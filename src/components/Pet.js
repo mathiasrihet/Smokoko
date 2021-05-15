@@ -27,8 +27,8 @@ export default class Pet extends React.Component {
                     z-index: 1;
                 }
                 .pet-img {
-                    width: 100px;
-                    height: 100px;
+                    width: 10vw;
+                    height: 10vw;
                 }
                 @keyframes moving {
                     0%   {left: 53%;}

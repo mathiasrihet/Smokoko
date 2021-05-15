@@ -3,6 +3,7 @@ import gameBackground from '../assets/gameBackground.png';
 import Pet from './Pet';
 import MyButton from './MyButton'
 import Gauge from './Gauge'
+import  './styles/House.css';
 
 
 export default class House extends React.Component {
@@ -100,55 +101,67 @@ export default class House extends React.Component {
     render(){
        
         return(
-            <div>
-                <style jsx>
+            <div className="wrapper">
+               {/*  <style jsx>
                 {`
+
+                .wrapper{
+                    background-color: #F3F3F3;
+                     text-align: center;
+                }
                 .pet-area {
                     position: relative;
-                    height: 100%;
-                    width: 100%;
+                    
                     top: 33%;
                     left: 0%;
                 }
                 .pet-area-img {
-                    position : relative;
-                    height: 100%;
-                    width: 75%;
+                    height: 40vw;
+                    width: 60vw;
                     z-index: 0;
                 }
                 .button-container {
-                    display: flex;
-                    margin: 10px;
-                    padding: 10px;
+                   height: 0vw;
+                    width: 100vw;
+                    
                 }
                 .button {
-                    margin: 10px;
+                display: inline-grid;
+                font-size: 2vw;
+                background-color: white;
+                height: 40vw;
+                width: 20vw;
+                
+
+                    
                 }
+
+               
                 `}
-                </style>
-                <div>
+                </style> */}
+               
                     <div>
                         <div className="pet-area">   
                             <Pet />
-                            <img className="pet-area-img" src={gameBackground}/>
+                            <img className="pet-area-img"  src={gameBackground}/>
                         </div>
                     </div>
                     
                     <div className="button-container">
                         <div className="button">
-                            <Gauge value={this.state.playLevel} label={'Plaisir'} colorRange={["#dbe7db", "#48d634"]}/>
+                           <div className="label"> <Gauge value={this.state.playLevel} label={'Plaisir'} colorRange={["#dbe7db", "#48d634"]}/> </div> 
                             <MyButton type='jouer' handleThis={this.onClickPlay}/>
                         </div>
                         <div className="button">
-                            <Gauge value={this.state.hungerLevel} label={'Faim'} colorRange={["#dbdbe7", "#4834d4"]}/>
+                            <div className="label"> <Gauge value={this.state.hungerLevel} label={'Faim'} colorRange={["#dbdbe7", "#4834d4"]}/> </div>
                             <MyButton type='manger' handleThis={this.onClickFeed}/>
                         </div>
                         <div className="button">
-                            <Gauge value={this.state.sleepLevel} label={'Energie'} colorRange={["#e7dbdb", "#d44834"]}/>
+                            <div className="label"> <Gauge value={this.state.sleepLevel} label={'Energie'} colorRange={["#e7dbdb", "#d44834"]}/> </div>
                             <MyButton type='dormir' handleThis={this.onClickSleep}/>
                         </div> 
                     </div> 
-                </div>
+                
             </div>
         )
     }
