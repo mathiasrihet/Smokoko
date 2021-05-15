@@ -1,5 +1,6 @@
 import React from 'react';
 import gameBackground from '../assets/gameBackground.png';
+import Faim_logo from '../assets/Faim_logo.png';
 import Pet from './Pet';
 import MyButton from './MyButton'
 import Gauge from './Gauge'
@@ -149,15 +150,15 @@ export default class House extends React.Component {
                     
                     <div className="button-container">
                         <div className="button">
-                           <div className="label"> <Gauge value={this.state.playLevel} label={'Plaisir'} colorRange={["#dbe7db", "#48d634"]}/> </div> 
+                            <Gauge value={this.state.playLevel} label={'Plaisir'} colorRange={["#ffe6f9", "#b30086"]}/>
                             <MyButton type='jouer' handleThis={this.onClickPlay}/>
                         </div>
                         <div className="button">
-                            <div className="label"> <Gauge value={this.state.hungerLevel} label={'Faim'} colorRange={["#dbdbe7", "#4834d4"]}/> </div>
+                            <Gauge value={this.state.hungerLevel} label={'Faim'} logo = {Faim_logo} colorRange={["#fffedc", "#ff9200"]}/>
                             <MyButton type='manger' handleThis={this.onClickFeed}/>
                         </div>
                         <div className="button">
-                            <div className="label"> <Gauge value={this.state.sleepLevel} label={'Energie'} colorRange={["#e7dbdb", "#d44834"]}/> </div>
+                            <Gauge value={this.state.sleepLevel} label = {'Energie'} colorRange={["#dbdbe7", "#4834d4"]}/>
                             <MyButton type='dormir' handleThis={this.onClickSleep}/>
                         </div> 
                     </div> 
