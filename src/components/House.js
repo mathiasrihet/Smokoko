@@ -11,6 +11,7 @@ import  './styles/House.css';
 export default class House extends React.Component {
     constructor(props){
         super(props);
+        //Récupérer données depuis API pour les mettre dans le state
         let d = new Date();
         this.state = {
             smoke: 50,
@@ -19,29 +20,37 @@ export default class House extends React.Component {
             sleepLevel : 100,
             playLevel : 100,
             smokingScore: 1,
-            timeToBed : null,
+            timeToBed : 0,
             decreaseRateEnergy : 25,
             decreaseRateHunger : 25,
             decreaseRatePlay : 25,
             decreaseRateSmoke : 25,
             lastUpdateTime : d.getTime(),
             speed : 1,
+            feeling : "normal",
         };
     }
 
 
     getScore(){
         /*return a score between 0 and 1 reflecting user performance*/
-        return 1
+        return 1;
     }
 
     msToHours(ms){
-        return ms / (3600 * 1000)
+        return ms / (3600 * 1000);
+    }
+
+    hoursToMs(hrs){
+        return hrs * (3600 * 1000);
+    }
+
+    getTime(){
+        return new Date().getTime();
     }
 
     updateLevels(){
-        let d = new Date();
-        let time = d.getTime();
+        let time = this.getTime();
         
         const timeSinceUpdate = this.msToHours(time - this.state.lastUpdateTime);
         //Convert it depending on units of decrease selected
@@ -51,6 +60,8 @@ export default class House extends React.Component {
         this.updateHunger(timeSinceUpdate);
         this.updateSleep(timeSinceUpdate);
         this.updatePlay(timeSinceUpdate);
+
+        //Update le feeling aussi
     }
 
     updateHunger(timeSinceUpdate){
@@ -58,46 +69,53 @@ export default class House extends React.Component {
         Make hungerLevel decrease depending on smoking quantity
         timeSinceUpdate is expressed in hours
         */
-        this.setState({hungerLevel : Math.max(this.state.hungerLevel (- this.state.decreaseRateHunger * this.state.speed) * timeSinceUpdate, 0)});
+        this.setState({hungerLevel : Math.max(this.state.hungerLevel (- this.state.decreaseRateHunger) * timeSinceUpdate * this.state.speed, 0)});
     }
 
     updateSleep(timeSinceUpdate){
         /*
         make the sleepLevel decrease
         */
-        this.setState({sleepLevel : Math.max(this.state.sleepLevel - this.state.decreaseRateEnergy * timeSinceUpdate, 0)});
+        this.setState({sleepLevel : Math.max(this.state.sleepLevel - this.state.decreaseRateEnergy * timeSinceUpdate * this.state.speed, 0)});
     }
 
     updatePlay(timeSinceUpdate){
         /*
         Make the PlayLevel decrease
         */
-        this.setState({playLevel : Math.max(this.state.playLevel - this.state.decreaseRatePlay * timeSinceUpdate, 0)});
+        this.setState({playLevel : Math.max(this.state.playLevel - this.state.decreaseRatePlay * timeSinceUpdate * this.state.speed, 0)});
     }
 
     updateSmoke(timeSinceUpdate){
         /*
         make the smoke decrease by evaporation and increase depending on smoking quantity
         */
-        this.setState({smoke : Math.max(this.state.smoke - this.state.decreaseRateSmoke * timeSinceUpdate, 0)})
+        this.setState({smoke : Math.max(this.state.smoke - this.state.decreaseRateSmoke * timeSinceUpdate * this.state.speed, 0)})
     }
 
     onClickSleep = () => {
         /*
         alpha : a parameter that defines how much the sleep is good depending on smoke quantity
         */
+        if (this.getTime() < this.state.timeToBed){return null;}
+
         let alpha = (100 - this.state.smoke) / 100
-        this.setState({sleepLevel : this.state.sleepLevel + alpha * (100 - this.this.state.sleepLevel))});
+        this.setState({sleepLevel : this.state.sleepLevel + alpha * (100 - this.state.sleepLevel)});
+        this.setState({timeToBed : this.getTime() + this.hoursToMs(2)});
     }
 
     onClickFeed = () => {
         /*Make the hunger level increase*/
+        if (this.getTime() < this.state.timeToBed){return null;}
+
         this.setState({hungerLevel : Math.min(this.state.hungerLevel + 10, 100)});
     }
 
     onClickPlay = () => {
         /*Make the play level increase and the energy level decrease*/
-        if (Math.random() < this.getScore()){
+        if (this.getTime() < this.state.timeToBed){return null;}
+
+        if (this.state.feeling != "angry"){
             this.setState({playLevel : Math.min(this.state.playLevel + 10, 100)});
             this.setState({sleepLevel : Math.max(this.state.sleepLevel - 10, 0)});
         }else {
