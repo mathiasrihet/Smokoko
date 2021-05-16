@@ -6,6 +6,7 @@ import Pet from './Pet';
 import MyButton from './MyButton'
 import Gauge from './Gauge'
 import  './styles/House.css';
+import API from './api'
 
 
 export default class House extends React.Component {
@@ -49,11 +50,21 @@ export default class House extends React.Component {
         return new Date().getTime();
     }
 
+    getLastPeufRecord(pseudo){
+        API.get('/Peufs', {params : {pseu : pseudo}})
+            //.then(resp => {console.log(resp.data[resp.data.length - 1]);})
+            .then(resp => {
+                this.setState({lastPeuf : resp.data[resp.data.length - 1],});
+            });
+    }
+
     componentDidMount() {
         this.updateInterval = setInterval(() => this.updateLevels(), 1000);
     }
 
     updateLevels(){
+        this.getLastPeufRecord("Wade");
+
         let time = this.getTime();
         
         const timeSinceUpdate = this.msToHours(time - this.state.lastUpdateTime);
