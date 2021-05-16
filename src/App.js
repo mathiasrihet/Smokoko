@@ -9,11 +9,15 @@ function App(){
   return (
     <div>
       
+      <div>
         <Banner />
+        </div>
+      <div>
         <House />
-      
+        </div>
+      <div>
         <Footer/>
-        <MyButton/> 
+        </div>  
     </div>
   );
 }

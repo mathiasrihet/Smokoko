@@ -49,12 +49,12 @@ export default function Gauge (props) {
 
   return (
     <div
-      style={{
+      /* style={{
         textAlign: "center",
-      }}>
+      }} */>
       <svg style={{overflow: "visible"}}
         width="15vw"
-        height="12vw"
+        height="12vh"
         viewBox={[
           -1, -1,
           2, 1,
@@ -89,15 +89,12 @@ export default function Gauge (props) {
       </svg>
 
       {!!props.label && (
-        <div style={{
-          color: props.colorRange[1],
-          marginTop: "-1.5em",
-          fontSize: "1.3em",
-          lineHeight: "1.3em",
-          fontWeight: "700",
-        }}>
-          { props.label }
-        </div>
+        <img style={{
+          height: "10%"
+          
+        }}src = {props.logo}>
+          
+        </img>
       )}
     </div>
   )

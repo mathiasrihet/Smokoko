@@ -17,7 +17,9 @@ function Footer() {
                 
                 `}
                 </style> */}
-           
+           <h1>LOL</h1>
+           <h1>LOL</h1>
+           <h1>LOL</h1>
             </div>
 }
 

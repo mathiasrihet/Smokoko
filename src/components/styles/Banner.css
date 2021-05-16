@@ -1,17 +1,37 @@
 .banner {
                     
-    background-color: white;
-       width: 100vw;
-       height: 20vw;
-       text-align:center;
-       min-height:15vw;
+    background-color: whitesmoke;
+    width:75%;
+    height: 25%;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    animation-name: example;
+  animation-duration: 4s;
+ 
 
     }
+
+    @keyframes example {
+        0%   {background-color: red;}
+        25%  {background-color: yellow;}
+        50%  {background-color: blue;}
+        100% {background-color: green;}
+      }
+
+   /*  @keyframes example {
+        from {background-color:whitesmoke;}
+        to {background-color: yellow;}
+      } 
+
+      permet de faire varier la couleur qd on passe la souris dessus
+ */
     .banner-img {
-        min-height: 20vw;
-        height: 15vw;
-        width: 25vw;
-        min-width: 35vw;
+        
+        height: 30%;
+        width: 70%;
+       
         z-index: 0;
         
     }

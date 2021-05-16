@@ -1,11 +1,14 @@
 .footer {
                     
-    background-color: rgb(145, 145, 255);
-       width: 100vw;
-       height: 100vw;
-       height: 100vh;
-       text-align:center;
-       min-width: 375px;
+   background-color: #408ae6;
+   
+    width:75%;
+    height: 25%;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    
        
 
     }

@@ -1,24 +1,27 @@
 .wrapper{
-    background-color: #F3F3F3;
-    text-align: center;
-    height: 100vh;
-    margin:0px;
-    min-width: 370px;
-    
+    background-color: whitesmoke;
+    width:75%;
+    height: 50%;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
    
     
 }
 .pet-area {
     position: relative;
-    background-color: #F3F3F3;
+    background-color: whitesmoke;
     top: 33%;
     left: 0%;
+    display: flex;
+    justify-content: center;
    
     
 }
 .pet-area-img {
-    height: 70%;
-    width: 80%;
+    height: 60%;
+    width: 70%;
 
   
 
@@ -27,19 +30,69 @@
     
 }
 
-.button-container {
-   height: 30vw;
-    width: 100vw;
+.containers{
+    height: 50%;
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items: center;
+    background-color: #aa7374
+    ;
     
-    
-} 
-.button {
-                display: inline-grid;
-                
-                font-size: 5vw;
-                background-color: white;
-                height: 0vw;
-                width: 30vw;
-        }
+}
 
-        
+.container1{
+    background-color: thistle;
+    text-align: center;
+    align-items: center;
+   
+    flex: 1;
+}
+
+.container2{
+    background-color: turquoise;
+    text-align: center;
+
+    flex: 1;
+}
+
+.container3{
+    background-color: teal;
+    text-align: center;
+   
+    flex: 1;
+}
+
+.containergauge1{
+    
+    background-color: rgb(126, 22, 223);
+    width: 100%;
+    
+}
+
+.containerbutton1{
+    background-color: rgb(51, 33, 51);
+    
+}
+
+.containergauge2{
+
+}
+
+.containerbutton2{
+    
+}
+
+.containergauge3{
+
+}
+
+.containerbutton3{
+    
+}
+
+.gauge{
+    
+}
+
