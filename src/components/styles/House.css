@@ -53,6 +53,7 @@
 .container2{
     background-color: turquoise;
     text-align: center;
+    align-items: center;
 
     flex: 1;
 }

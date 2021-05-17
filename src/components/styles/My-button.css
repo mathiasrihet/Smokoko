@@ -1,11 +1,11 @@
 .My-button{
-    position: relative;
+  position: relative;
   background-color: #4CAF50;
   border: none;
-  font-size: 28px;
+  font-size: 100%;
   color: #FFFFFF;
-  padding: 20px;
-  width: 200px;
+  padding: 10%;
+  width: 100%;
   text-align: center;
   transition-duration: 0.4s;
   text-decoration: none;

@@ -21,6 +21,7 @@ export default function App() {
       <div>
         <nav>
           <ul>
+          <h1>Les liens sont temporaires</h1>
             <li>
               <Link to="/">Welcome</Link>
             </li>

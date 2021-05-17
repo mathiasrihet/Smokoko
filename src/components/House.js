@@ -194,38 +194,38 @@ export default class House extends React.Component {
                
             
                <div>
-                        <div className="pet-area">   
-                            <Pet />
-                            <img className="pet-area-img"  src={gameBackground}/>
+                    <div className="pet-area">   
+                        <Pet />
+                        <img className="pet-area-img"  src={gameBackground}/>
+                    </div>
+                </div>
+                    
+                <div className="containers">
+                    <div className="container1">
+                        <div className="containergauge1">
+                            <Gauge className="gauge" value={this.state.playLevel} label={'Plaisir'} colorRange={["#ffe6f9", "#b30086"]}/>
+                        </div>
+                        <div className="containerbutton1">
+                            <MyButton type='jouer' handleThis={this.onClickPlay}/>
                         </div>
                     </div>
-                    
-                    <div className="containers">
-                        <div className="container1">
-                            <div className="containergauge1">
-                                <Gauge className="gauge" value={this.state.playLevel} label={'Plaisir'} colorRange={["#ffe6f9", "#b30086"]}/>
-                            </div>
-                            <div className="containerbutton1">
-                                <MyButton type='jouer' handleThis={this.onClickPlay}/>
-                            </div>
+                    <div className="container2">
+                        <div className="containergauge2">
+                            <Gauge className="gauge" value={this.state.hungerLevel} label={'Faim'} /* logo = {Faim_logo} */ colorRange={["#fffedc", "#ff9200"]}/>
                         </div>
-                        <div className="container2">
-                            <div className="containergauge2">
-                                <Gauge className="gauge" value={this.state.hungerLevel} label={'Faim'} /* logo = {Faim_logo} */ colorRange={["#fffedc", "#ff9200"]}/>
-                            </div>
-                            <div className="containerbutton2">
-                                <MyButton type='manger' handleThis={this.onClickFeed}/>
-                            </div>
+                        <div className="containerbutton2">
+                            <MyButton type='manger' handleThis={this.onClickFeed}/>
                         </div>
-                        <div className="container3">
-                            <div className="containergauge3">
-                                <Gauge className="gauge" value={this.state.sleepLevel} label = {'Energie'} /* logo = {Energie_logo} */ colorRange={["#dbdbe7", "#4834d4"]}/>
-                            </div>
-                            <div className="containerbutton3">
-                                <MyButton type='dormir' handleThis={this.onClickSleep}/>
-                            </div>
-                        </div> 
+                    </div>
+                    <div className="container3">
+                        <div className="containergauge3">
+                            <Gauge className="gauge" value={this.state.sleepLevel} label = {'Energie'} /* logo = {Energie_logo} */ colorRange={["#dbdbe7", "#4834d4"]}/>
+                        </div>
+                        <div className="containerbutton3">
+                            <MyButton type='dormir' handleThis={this.onClickSleep}/>
+                        </div>
                     </div> 
+                </div> 
                 
             </div>
         )
