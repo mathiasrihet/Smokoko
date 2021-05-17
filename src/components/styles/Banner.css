@@ -7,24 +7,20 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    animation-name: example;
-  animation-duration: 4s;
+    
  
 
     }
 
+   
+
+   /*  
     @keyframes example {
         0%   {background-color: red;}
         25%  {background-color: yellow;}
         50%  {background-color: blue;}
         100% {background-color: green;}
       }
-
-   /*  @keyframes example {
-        from {background-color:whitesmoke;}
-        to {background-color: yellow;}
-      } 
-
       permet de faire varier la couleur qd on passe la souris dessus
  */
     .banner-img {
@@ -36,4 +32,5 @@
         
     }
 
+   
    

@@ -1,5 +1,6 @@
 import React from 'react';
 import gameBackground from '../assets/gameBackground.png';
+import smoke from '../assets/smoke.png';
 import Faim_logo from '../assets/Faim_logo.png';
 import Energie_logo from '../assets/Energie_logo.png';
 import Pet from './Pet';
@@ -154,49 +155,14 @@ export default class House extends React.Component {
         
         return(
             <div className="wrapper">
-               {/*  <style jsx>
-                {`
-
-                .wrapper{
-                    background-color: #F3F3F3;
-                     text-align: center;
-                }
-                .pet-area {
-                    position: relative;
-                    
-                    top: 33%;
-                    left: 0%;
-                }
-                .pet-area-img {
-                    height: 40vw;
-                    width: 60vw;
-                    z-index: 0;
-                }
-                .button-container {
-                   height: 0vw;
-                    width: 100vw;
-                    
-                }
-                .button {
-                display: inline-grid;
-                font-size: 2vw;
-                background-color: white;
-                height: 40vw;
-                width: 20vw;
-                
-
-                    
-                }
-
-               
-                `}
-                </style> */}
+               {}
                
             
                <div>
                         <div className="pet-area">   
                             <Pet />
-                            <img className="pet-area-img"  src={gameBackground}/>
+                            <img class="superpose" className="pet-area-img"  src={gameBackground}/>
+                            {/* <img class="superpose"className="smoke-img"  src={smoke}/> */}
                         </div>
                     </div>
                     
