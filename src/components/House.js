@@ -63,7 +63,7 @@ export default class House extends React.Component {
     }
 
     updateLevels(){
-        this.getLastPeufRecord("Wade");
+        this.getLastPeufRecord("Essie");
 
         let time = this.getTime();
         
@@ -222,7 +222,7 @@ export default class House extends React.Component {
                                 <Gauge className="gauge" value={this.state.sleepLevel} label = {'Energie'} /* logo = {Energie_logo} */ colorRange={["#dbdbe7", "#4834d4"]}/>
                             </div>
                             <div className="containerbutton3">
-                                <MyButton type='manger' handleThis={this.onClickFeed}/>
+                                <MyButton type='dormir' handleThis={this.onClickSleep}/>
                             </div>
                         </div> 
                     </div> 
