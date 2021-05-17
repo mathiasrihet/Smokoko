@@ -88,14 +88,14 @@ export default function Gauge (props) {
         />
       </svg>
 
-      {!!props.label && (
+      {/* {!!props.label && (
         <img style={{
           height: "10%"
           
         }}src = {props.logo}>
           
         </img>
-      )}
+      )} */}
     </div>
   )
   

@@ -4,11 +4,8 @@ import  './styles/My-button.css';
 
 export default function MyButton (props) {
     return (
-        <div>
-       {}
         <div className="Button-area">
             <button className="My-button" onClick={props.handleThis}>{props.type}</button>
-        </div>
         </div>
     )
 }
