@@ -12,6 +12,7 @@ import Welcome from './components/Welcome.js';
 
 
 
+
 export default function App() {
   return (
     <Router>
@@ -48,7 +49,8 @@ export default function App() {
           </Route>
         </Switch>
       </div>
-      <div>
+      
+      <div className="container-footer">
         <Footer/>
       </div> 
     </Router>

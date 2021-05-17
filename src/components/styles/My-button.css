@@ -1,9 +1,9 @@
 .My-button{
   position: relative;
-  background-color: #4CAF50;
-  border: none;
+  background-color: whitesmoke;
+  border-color: white;
   font-size: 100%;
-  color: #FFFFFF;
+  color: white;
   padding: 10%;
   width: 100%;
   text-align: center;
@@ -14,11 +14,11 @@
 }
 
 
-/* .My-button:hover{ 
+ .My-button:hover{ 
     background-color: red; 
   color: white;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-}  */
+}  
 
 .My-button:active:after{
     padding: 0;

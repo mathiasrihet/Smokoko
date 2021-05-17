@@ -1,6 +1,6 @@
 import React from 'react';
 import gameBackground from '../assets/gameBackground.png';
-import smoke from '../assets/smoke.png';
+import smoke from '../assets/smoke3.png';
 import Faim_logo from '../assets/Faim_logo.png';
 import Energie_logo from '../assets/Energie_logo.png';
 import Pet from './Pet';
@@ -162,7 +162,7 @@ export default class House extends React.Component {
                         <div className="pet-area">   
                             <Pet />
                             <img class="superpose" className="pet-area-img"  src={gameBackground}/>
-                            {/* <img class="superpose"className="smoke-img"  src={smoke}/> */}
+                            <img class="superpose"className="smoke-img"  src={smoke}/>
                         </div>
                     </div>
                
