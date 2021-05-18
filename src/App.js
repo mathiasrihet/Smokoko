@@ -5,7 +5,6 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-
 import Banner from './components/Banner.js';
 import Footer from './components/Footer.js';
 import House from './components/House.js';
@@ -13,57 +12,10 @@ import Welcome from './components/Welcome.js';
 import  './App.css';
 
 
+
+
 export default class App extends React.Component {
 
-<<<<<<< HEAD
-export default function App() {
-  return (
-    <div className="Global">
-    <Router>
-       <div>
-        
-         <Banner />
-       
-       </div>
-      <div>
-        {/* <nav>
-          <ul>
-          <h1>Les liens sont temporaires</h1>
-            <li>
-              <Link to="/">Welcome</Link>
-            </li>
-            { <li>
-              <Link to="/about">About</Link>
-            </li> }
-            <li>
-              <Link to="/my-pet">My-pet</Link>
-            </li>
-          </ul>
-        </nav> */}
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          {/* <Route path="/about">
-            <About />
-          </Route> */}
-          <Route path="/my-pet">
-            <House />
-          </Route>
-          <Route path="/">
-            <Welcome />
-          </Route>
-        </Switch>
-      </div>
-      
-      <div className="container-footer">
-        <Footer/>
-      </div> 
-    </Router>
-    </div>
-  );
-}
-=======
     constructor(props){
 
       super(props);
@@ -71,12 +23,11 @@ export default function App() {
       this.state = {
         user: ""
       }
->>>>>>> 318aff91374dbd9ef51740e250de04fb04302433
 
     }
 
 
-  
+
     handleLogin = (e)=>{
       this.setState({user:e});
     };
@@ -84,10 +35,11 @@ export default function App() {
     handleLogout = ()=>{
       this.setState({user:""});
     };
-    
+
 
     render(){
       return (
+      <div className="Global">
       <Router>
         <div>
           <Banner />
@@ -103,13 +55,12 @@ export default function App() {
             </Route>
           </Switch>
         </div>
-        
+
         <div className="container-footer">
           <Footer/>
         </div> 
       </Router>
+      </div>
     );
   }
 }
-
-

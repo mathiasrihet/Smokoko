@@ -7,7 +7,8 @@
     height: 100%; /* si prblm de layout check ici */
     display: inline-flex;
     flex-direction: column;   
-  padding: 0;
+  padding-top:60px;
+  padding-bottom: 60px;
   margin: 0;
   border:none;
 }
@@ -28,19 +29,22 @@
     left: 0%;
     z-index: 0;
     position: relative;
-    border: 7px solid white;
+    border: 0px solid white;
     background-color: transparent;
+    padding-top: 70px;
     
 }
 
 .smoke-img{
-    height: 99.2%;
+    height: 75.2%;
+
+    
     width: 50%;
     z-index: 20;
     position: absolute;
     top: 0%;
     left: 25%;
-  
+    padding-top: 70px;
 }
 
 .containers{

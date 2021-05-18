@@ -161,7 +161,7 @@ class House extends React.Component {
         
         return(
             <div className="wrapper">
-               {}
+               
                <button onClick = {this.handleLogout}>Log out</button>
             
                <div>
