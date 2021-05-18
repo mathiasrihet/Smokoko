@@ -8,9 +8,10 @@ import MyButton from './MyButton'
 import Gauge from './Gauge'
 import  './styles/House.css';
 import API from './api'
+import { withRouter } from 'react-router-dom';
 
 
-export default class House extends React.Component {
+class House extends React.Component {
     constructor(props){
         super(props);
         //Récupérer données depuis API pour les mettre dans le state
@@ -149,6 +150,11 @@ export default class House extends React.Component {
         
     }
 
+    handleLogout = () => {
+        this.props.onLogout()
+        this.props.history.goBack()
+    }
+
     
 
     render(){
@@ -156,15 +162,15 @@ export default class House extends React.Component {
         return(
             <div className="wrapper">
                {}
-               
+               <button onClick = {this.handleLogout}>Log out</button>
             
                <div>
-                        <div className="pet-area">   
-                            <Pet />
-                            <img class="superpose" className="pet-area-img"  src={gameBackground}/>
-                            <img class="superpose"className="smoke-img"  src={smoke}/>
-                        </div>
+                    <div className="pet-area">   
+                        <Pet />
+                        <img class="superpose" className="pet-area-img"  src={gameBackground}/>
+                        <img class="superpose" className="smoke-img"  src={smoke}/>
                     </div>
+                </div>
                
                     
                 <div className="containers">
@@ -198,3 +204,5 @@ export default class House extends React.Component {
         )
     }
 }
+
+export default withRouter(House);

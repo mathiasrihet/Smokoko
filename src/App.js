@@ -3,13 +3,12 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
 } from "react-router-dom";
 import Banner from './components/Banner.js';
 import Footer from './components/Footer.js';
 import House from './components/House.js';
 import Welcome from './components/Welcome.js';
-
 
 
 
@@ -22,12 +21,20 @@ export default class App extends React.Component {
       this.state = {
         user: ""
       }
+
     }
+
+
   
     handleLogin = (e)=>{
       this.setState({user:e});
-    }
-  
+    };
+
+    handleLogout = ()=>{
+      this.setState({user:""});
+    };
+    
+
     render(){
       return (
       <Router>
@@ -35,29 +42,9 @@ export default class App extends React.Component {
           <Banner />
         </div>
         <div>
-          <nav>
-            <ul>
-            <h1>Les liens sont temporaires</h1>
-              <li>
-                <Link to="/">Welcome</Link>
-              </li>
-              {/* <li>
-                <Link to="/about">About</Link>
-              </li> */}
-              <li>
-                <Link to="/my-pet">My-pet</Link>
-              </li>
-            </ul>
-          </nav>
-
-          {/* A <Switch> looks through its children <Route>s and
-              renders the first one that matches the current URL. */}
           <Switch>
-            {/* <Route path="/about">
-              <About />
-            </Route> */}
             <Route path="/my-pet">
-              <House />
+              <House onLogout={this.handleLogout}/>
             </Route>
             <Route path="/">
               <h1>{"Salut "+this.state.user}</h1>
@@ -74,26 +61,4 @@ export default class App extends React.Component {
   }
 }
 
-
-
-// function App(){
-//   return (
-//     <div>
-      
-//       <div>
-//         <Banner />
-//         </div>
-//       <div>
-//         <House />
-//         </div>
-//       <div>
-//         <Footer/>
-//         </div>  
-//     </div>
-//   );
-// }
-
-
-
-// export default App;
 

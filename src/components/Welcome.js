@@ -1,6 +1,7 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-export default class Welcome extends React.Component{
+class Welcome extends React.Component{
     constructor(props) {
         super(props);
         this.state = {value: ''};
@@ -15,6 +16,7 @@ export default class Welcome extends React.Component{
 
     handleSubmit = (event)=>{
         this.props.handleSubmit(this.state.value)
+        this.props.history.push("/my-pet")
         event.preventDefault();
       }
     
@@ -39,3 +41,6 @@ export default class Welcome extends React.Component{
         // ) 
         }
 }
+
+
+export default withRouter(Welcome);
