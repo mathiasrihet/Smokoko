@@ -1,7 +1,8 @@
 .My-button{
   position: relative;
-  background-color: whitesmoke;
-  border-color: white;
+  background-color: #c4d9f3;
+  border-color: #c4d9f3;
+  border-radius: 4px;
   font-size: 100%;
   color: white;
   padding: 10%;
@@ -15,7 +16,7 @@
 
 
  .My-button:hover{ 
-    background-color: red; 
+    background-color: transparent; 
   color: white;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }  

@@ -1,11 +1,15 @@
 
 .wrapper{
-    background-color:red;
+    background-color: ffffff;
+    /* background-size: 100%;          
+    background-image: url("../../assets/pastel.jpg"); */
     width:100%;
     height: 100%; /* si prblm de layout check ici */
     display: inline-flex;
     flex-direction: column;   
   padding: 0;
+  margin: 0;
+  border:none;
 }
 
 .pet-area {
@@ -13,27 +17,29 @@
     top: 33%;
     left: 0%;
     text-align: center;   
+    background-color: transparent;
 }
 
 
 .pet-area-img {
-    height: 60%;
-    width: 70%;
+    height: 40%;
+    width: 50%;
     top: 33%;
     left: 0%;
     z-index: 0;
     position: relative;
-    border: 2px solid white;
+    border: 7px solid white;
+    background-color: transparent;
     
 }
 
 .smoke-img{
-    height: 100%;
-    width: 70%;
+    height: 99.2%;
+    width: 50%;
     z-index: 20;
     position: absolute;
     top: 0%;
-    left: 15%;
+    left: 25%;
   
 }
 
@@ -44,6 +50,7 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    background-color: transparent;
 
   
     
@@ -51,7 +58,7 @@
 }
 
 .container1{
-    background-color: thistle;
+    background-color: transparent;
 
 
    
@@ -59,14 +66,14 @@
 }
 
 .container2{
-    background-color: whitesmoke;
+    background-color: transparent;
    
 
     
 }
 
 .container3{
-    background-color: whitesmoke;
+    background-color: transparent;
    
    
     
@@ -74,30 +81,29 @@
 
 .containergauge1{
     
-    background-color: whitesmoke;
+    background-color: transparent;
    
     
 }
 
 .containerbutton1{
-    background-color: rgb(51, 33, 51);
-    
+    background-color: transparent;    
 }
 
 .containergauge2{
-
+    background-color: transparent;
 }
 
 .containerbutton2{
-    
+    background-color: transparent;
 }
 
 .containergauge3{
-
+    background-color: transparent;
 }
 
 .containerbutton3{
-    
+    background-color: transparent;
 }
 
 .gauge{

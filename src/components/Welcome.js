@@ -1,4 +1,5 @@
 import React from 'react';
+import  './styles/Welcome.css';
 
 export default class Welcome extends React.Component{
     constructor(props) {

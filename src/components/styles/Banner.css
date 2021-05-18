@@ -1,14 +1,18 @@
 
 
 .banner {
-                    
-    background-color: white;
+    background-color: transparent;      
+    /* background-size: 100%;          
+    background-image: url("../../assets/pastel.jpg"); */
     width:100%;
-    height: 25%;
+    height: 100%;
     display: inline-flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    margin: 0;
+    padding: 0;
+    border:none;
     
  
 
@@ -27,8 +31,8 @@
  */
     .banner-img {
         
-        height: 25%;
-        width: 45%;
+        height: 50%;
+        width: 40%;
        
         z-index: 0;
         

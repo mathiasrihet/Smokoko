@@ -5,35 +5,39 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
 import Banner from './components/Banner.js';
 import Footer from './components/Footer.js';
 import House from './components/House.js';
 import Welcome from './components/Welcome.js';
-
+import  './App.css';
 
 
 
 export default function App() {
   return (
+    <div className="Global">
     <Router>
        <div>
+        
          <Banner />
+       
        </div>
       <div>
-        <nav>
+        {/* <nav>
           <ul>
           <h1>Les liens sont temporaires</h1>
             <li>
               <Link to="/">Welcome</Link>
             </li>
-            {/* <li>
+            { <li>
               <Link to="/about">About</Link>
-            </li> */}
+            </li> }
             <li>
               <Link to="/my-pet">My-pet</Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -54,6 +58,7 @@ export default function App() {
         <Footer/>
       </div> 
     </Router>
+    </div>
   );
 }
 
