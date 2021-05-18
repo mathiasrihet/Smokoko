@@ -18,7 +18,7 @@ export default class Pet extends React.Component {
                 {`
                 .pet{
                     position: absolute;
-                    top: 63%;
+                    top: 68%;
                     left: 33%;
                     animation-name: moving;
                     animation-duration: 10s;
@@ -33,8 +33,8 @@ export default class Pet extends React.Component {
                 @keyframes moving {
                     0%   {left: 53%;}
                     25%  {left: 33%;}
-                    50%  {left: 13%;}
-                    100% {left: 23%;}
+                    50%  {left: 55%;}
+                    100% {left: 33%;}
                 }
           `}
                 </style>

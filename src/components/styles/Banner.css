@@ -11,7 +11,7 @@
     justify-content: space-around;
     align-items: center;
     margin: 0;
-    padding: 0;
+    padding-bottom: 0px;
     border:none;
     
  
@@ -19,16 +19,6 @@
     }
 
    
-
-   /*  
-    @keyframes example {
-        0%   {background-color: red;}
-        25%  {background-color: yellow;}
-        50%  {background-color: blue;}
-        100% {background-color: green;}
-      }
-      permet de faire varier la couleur qd on passe la souris dessus
- */
     .banner-img {
         
         height: 50%;
