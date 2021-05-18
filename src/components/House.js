@@ -1,8 +1,6 @@
 import React from 'react';
 import gameBackground from '../assets/gameBackground.png';
 import smoke from '../assets/smoke3.png';
-import Faim_logo from '../assets/Faim_logo.png';
-import Energie_logo from '../assets/Energie_logo.png';
 import Pet from './Pet';
 import MyButton from './MyButton'
 import Gauge from './Gauge'
@@ -15,7 +13,9 @@ class House extends React.Component {
     constructor(props){
         super(props);
         //Récupérer données depuis API pour les mettre dans le state
+
         let d = new Date();
+
         this.state = {
             smoke: 50,
             petIsAlive: true,
@@ -24,14 +24,21 @@ class House extends React.Component {
             playLevel : 100,
             smokingScore: 1,
             timeToBed : 0,
-            decreaseRateEnergy : 10000,
-            decreaseRateHunger : 10000,
-            decreaseRatePlay : 10000,
+            decreaseRateEnergy : 25,
+            decreaseRateHunger : 25,
+            decreaseRatePlay : 25,
             decreaseRateSmoke : 25,
             lastUpdateTime : d.getTime(),
             speed : 1,
             feeling : "normal",
         };
+
+        API.get('/People', {params : {pseudo : this.props.currentUser}})
+            // .then(resp => {console.log(resp.data[resp.data.length - 1]);})
+            .then(resp => {
+                this.setState({objnic:resp.data[0].objnic});
+                this.setState({qtnic:resp.data[0].qtnic});
+            });
     }
 
 
@@ -54,7 +61,7 @@ class House extends React.Component {
 
     getLastPeufRecord(pseudo){
         API.get('/Peufs', {params : {pseu : pseudo}})
-            //.then(resp => {console.log(resp.data[resp.data.length - 1]);})
+            // .then(resp => {console.log(resp.data[resp.data.length - 1]);})
             .then(resp => {
                 this.setState({lastPeuf : resp.data[resp.data.length - 1],});
             });
@@ -65,7 +72,7 @@ class House extends React.Component {
     }
 
     updateLevels(){
-        this.getLastPeufRecord("Essie");
+        this.getLastPeufRecord(this.props.currentUser);
 
         let time = this.getTime();
         
@@ -89,7 +96,13 @@ class House extends React.Component {
         Make hungerLevel decrease depending on smoking quantity
         timeSinceUpdate is expressed in hours
         */
-        this.setState({hungerLevel : Math.max(this.state.hungerLevel - this.state.decreaseRateHunger * timeSinceUpdate * this.state.speed, 0)});
+        const seuilNic = [2,4,8,11,18]
+
+
+        let alpha = Math.max(1,(seuilNic.indexOf(this.state.qtnic)-seuilNic.indexOf(this.state.objnic))*0.5+1)
+
+
+        this.setState({hungerLevel : Math.max(this.state.hungerLevel - this.state.decreaseRateHunger * timeSinceUpdate * alpha * this.state.speed, 0)});
     }
 
     updateSleep(timeSinceUpdate){
@@ -122,9 +135,10 @@ class House extends React.Component {
         }
 
         let alpha = (100 - this.state.smoke) / 100
+        alpha = alpha*0.8+0.2
         this.setState({sleepLevel : this.state.sleepLevel + alpha * (100 - this.state.sleepLevel)});
         //Rend le pet indispo pendant 2 heures 
-        this.setState({timeToBed : this.getTime() + this.hoursToMs(2)});
+        this.setState({timeToBed : this.getTime() + this.hoursToMs(2/this.state.speed)});
         this.setState({feeling : "sleepy"});
     }
 
@@ -138,12 +152,13 @@ class House extends React.Component {
     }
 
     onClickPlay = () => {
+
         /*Make the play level increase and the energy level decrease*/
         if (this.getTime() < this.state.timeToBed){return null;}
 
-        if (this.state.feeling != "angry"){
+        if (this.state.feeling !== "angry"){
             this.setState({playLevel : Math.min(this.state.playLevel + 10, 100)});
-            this.setState({sleepLevel : Math.max(this.state.sleepLevel - 10, 0)});
+            this.setState({sleepLevel : Math.max(this.state.sleepLevel - 5, 0)});
         }else {
             /*Send a message and make the pet unusable for some time*/
         }
@@ -161,13 +176,18 @@ class House extends React.Component {
         
         return(
             <div className="wrapper">
+            {/* <style jsx>
+            .smoke-img{`
+                    opacity:{}
+                `}
+            </style> */}
                <button className="log-out" onClick = {this.handleLogout}>Log out</button>
             
                <div>
                     <div className="pet-area">   
                         <Pet />
-                        <img class="superpose" className="pet-area-img"  src={gameBackground}/>
-                        <img class="superpose" className="smoke-img"  src={smoke}/>
+                        <img class="superpose" className="pet-area-img"  src={gameBackground} alt="Background"/>
+                        <img class="superpose" className="smoke-img"  src={smoke} />
                     </div>
                 </div>
                
@@ -183,7 +203,7 @@ class House extends React.Component {
                     </div>
                     <div className="container2">
                         <div className="containergauge2">
-                            <Gauge className="gauge" value={this.state.hungerLevel} label={'Faim'} /* logo = {Faim_logo} */ colorRange={["#fffedc", "#ff9200"]}/>
+                            <Gauge className="gauge" value={this.state.hungerLevel} label={'Faim'} colorRange={["#fffedc", "#ff9200"]}/>
                         </div>
                         <div className="containerbutton2">
                             <MyButton type='manger' handleThis={this.onClickFeed}/>
@@ -191,7 +211,7 @@ class House extends React.Component {
                     </div>
                     <div className="container3">
                         <div className="containergauge3">
-                            <Gauge className="gauge" value={this.state.sleepLevel} label = {'Energie'} /* logo = {Energie_logo} */ colorRange={["#dbdbe7", "#4834d4"]}/>
+                            <Gauge className="gauge" value={this.state.sleepLevel} label = {'Energie'} colorRange={["#dbdbe7", "#4834d4"]}/>
                         </div>
                         <div className="containerbutton3">
                             <MyButton type='dormir' handleThis={this.onClickSleep}/>

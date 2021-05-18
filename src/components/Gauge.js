@@ -37,21 +37,8 @@ export default function Gauge (props) {
   let gradientSteps = colorScale.ticks(10)
     .map(value => colorScale(value))
 
-  let getCoordsOnArc = (angle, offset=10) => [
-    Math.cos(angle - (Math.PI / 2)) * offset,
-    Math.sin(angle - (Math.PI / 2)) * offset,
-  ]
-
-  let markerLocation = getCoordsOnArc(
-    angle,
-    1 - ((1 - 0.65) / 2),
-  )
-
   return (
-    <div
-      /* style={{
-        textAlign: "center",
-      }} */>
+    <div>
       <svg style={{overflow: "visible"}}
         width="17vw"
         height="15vh"
@@ -87,18 +74,7 @@ export default function Gauge (props) {
           fill={"url(#Gauge__gradient"+props.label+")"}
         />
       </svg>
-
-      {/* {!!props.label && (
-        <img style={{
-          height: "10%"
-          
-        }}src = {props.logo}>
-          
-        </img>
-      )} */}
     </div>
   )
-  
-
 
 }
