@@ -13,48 +13,65 @@ import Welcome from './components/Welcome.js';
 
 
 
-export default function App() {
-  return (
-    <Router>
-       <div>
-         <Banner />
-       </div>
-      <div>
-        <nav>
-          <ul>
-          <h1>Les liens sont temporaires</h1>
-            <li>
-              <Link to="/">Welcome</Link>
-            </li>
-            {/* <li>
-              <Link to="/about">About</Link>
-            </li> */}
-            <li>
-              <Link to="/my-pet">My-pet</Link>
-            </li>
-          </ul>
-        </nav>
+export default class App extends React.Component {
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          {/* <Route path="/about">
-            <About />
-          </Route> */}
-          <Route path="/my-pet">
-            <House />
-          </Route>
-          <Route path="/">
-            <Welcome />
-          </Route>
-        </Switch>
-      </div>
-      
-      <div className="container-footer">
-        <Footer/>
-      </div> 
-    </Router>
-  );
+    constructor(props){
+
+      super(props);
+
+      this.state = {
+        user: ""
+      }
+    }
+  
+    handleLogin = (e)=>{
+      this.setState({user:e});
+    }
+  
+    render(){
+      return (
+      <Router>
+        <div>
+          <Banner />
+        </div>
+        <div>
+          <nav>
+            <ul>
+            <h1>Les liens sont temporaires</h1>
+              <li>
+                <Link to="/">Welcome</Link>
+              </li>
+              {/* <li>
+                <Link to="/about">About</Link>
+              </li> */}
+              <li>
+                <Link to="/my-pet">My-pet</Link>
+              </li>
+            </ul>
+          </nav>
+
+          {/* A <Switch> looks through its children <Route>s and
+              renders the first one that matches the current URL. */}
+          <Switch>
+            {/* <Route path="/about">
+              <About />
+            </Route> */}
+            <Route path="/my-pet">
+              <House />
+            </Route>
+            <Route path="/">
+              <h1>{"Salut "+this.state.user}</h1>
+              <Welcome handleSubmit={this.handleLogin}/>
+            </Route>
+          </Switch>
+        </div>
+        
+        <div className="container-footer">
+          <Footer/>
+        </div> 
+      </Router>
+    );
+  }
 }
 
 
