@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import  './styles/Welcome.css';
 
 class Welcome extends React.Component{
     constructor(props) {
@@ -22,13 +23,23 @@ class Welcome extends React.Component{
 
     render(){
         return (
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Pseudo :
-            <input type="text" value={this.state.value} onChange={this.handleChange}/>
-          </label>
-          <input type="submit" value="Log in" />
+        <div className="page-acceuil">
+           
+            <h1> Bienvenue </h1>
+            <form  className="form" onSubmit={this.handleSubmit}>
+                <p></p>
+                    
+                <label className="label"> Pseudo  </label>    
+                 <input className="input1" type="text" value={this.state.value} onChange={this.handleChange}/>
+                 
+                <input className="input2" type="submit" value="Log in" />
+                  
+          <div className="vide">
+            <p></p>
+            
+          </div>
         </form>
+        </div>
       );
     }
 }

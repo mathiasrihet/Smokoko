@@ -3,6 +3,7 @@
     background-color: #c4d9f3;
     border:0px;
     font-size: 85%;
+    
     color: white;
     padding: 0%;
     width: 100%;
@@ -16,6 +17,9 @@
     background-color: transparent; 
   color: white;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  color: #c4d9f3;
+  border:#c4d9f3;
+  border:3px;
 }  
 
 .log-out:active:after{

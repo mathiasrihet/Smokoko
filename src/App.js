@@ -44,13 +44,13 @@ export default class App extends React.Component {
         <div>
           <Banner />
         </div>
-        <div>
+        <div className="Container-logout">
           <Switch>
             <Route path="/my-pet">
               <House onLogout={this.handleLogout}/>
             </Route>
             <Route path="/">
-              <h1>{"Salut "+this.state.user}</h1>
+              <h1>{ this.state.user}</h1>
               <Welcome handleSubmit={this.handleLogin}/>
             </Route>
           </Switch>
