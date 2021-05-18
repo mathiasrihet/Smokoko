@@ -1,8 +1,6 @@
 import React from 'react';
 import gameBackground from '../assets/gameBackground.png';
 import smoke from '../assets/smoke3.png';
-import Faim_logo from '../assets/Faim_logo.png';
-import Energie_logo from '../assets/Energie_logo.png';
 import Pet from './Pet';
 import MyButton from './MyButton'
 import Gauge from './Gauge'
@@ -141,7 +139,7 @@ class House extends React.Component {
         /*Make the play level increase and the energy level decrease*/
         if (this.getTime() < this.state.timeToBed){return null;}
 
-        if (this.state.feeling != "angry"){
+        if (this.state.feeling !== "angry"){
             this.setState({playLevel : Math.min(this.state.playLevel + 10, 100)});
             this.setState({sleepLevel : Math.max(this.state.sleepLevel - 10, 0)});
         }else {
@@ -167,8 +165,8 @@ class House extends React.Component {
                <div>
                     <div className="pet-area">   
                         <Pet />
-                        <img class="superpose" className="pet-area-img"  src={gameBackground}/>
-                        <img class="superpose" className="smoke-img"  src={smoke}/>
+                        <img class="superpose" className="pet-area-img"  src={gameBackground} alt="Background"/>
+                        <img class="superpose" className="smoke-img"  src={smoke} />
                     </div>
                 </div>
                
@@ -184,7 +182,7 @@ class House extends React.Component {
                     </div>
                     <div className="container2">
                         <div className="containergauge2">
-                            <Gauge className="gauge" value={this.state.hungerLevel} label={'Faim'} /* logo = {Faim_logo} */ colorRange={["#fffedc", "#ff9200"]}/>
+                            <Gauge className="gauge" value={this.state.hungerLevel} label={'Faim'} colorRange={["#fffedc", "#ff9200"]}/>
                         </div>
                         <div className="containerbutton2">
                             <MyButton type='manger' handleThis={this.onClickFeed}/>
@@ -192,7 +190,7 @@ class House extends React.Component {
                     </div>
                     <div className="container3">
                         <div className="containergauge3">
-                            <Gauge className="gauge" value={this.state.sleepLevel} label = {'Energie'} /* logo = {Energie_logo} */ colorRange={["#dbdbe7", "#4834d4"]}/>
+                            <Gauge className="gauge" value={this.state.sleepLevel} label = {'Energie'} colorRange={["#dbdbe7", "#4834d4"]}/>
                         </div>
                         <div className="containerbutton3">
                             <MyButton type='dormir' handleThis={this.onClickSleep}/>
