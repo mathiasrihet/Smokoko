@@ -161,8 +161,7 @@ class House extends React.Component {
         
         return(
             <div className="wrapper">
-               
-               <button onClick = {this.handleLogout}>Log out</button>
+               <button className="log-out" onClick = {this.handleLogout}>Log out</button>
             
                <div>
                     <div className="pet-area">   

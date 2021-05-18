@@ -53,8 +53,8 @@ export default function Gauge (props) {
         textAlign: "center",
       }} */>
       <svg style={{overflow: "visible"}}
-        width="15vw"
-        height="12vh"
+        width="17vw"
+        height="15vh"
         viewBox={[
           -1, -1,
           2, 1,
