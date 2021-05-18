@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
 } from "react-router-dom";
 
 import Banner from './components/Banner.js';
@@ -13,7 +13,9 @@ import Welcome from './components/Welcome.js';
 import  './App.css';
 
 
+export default class App extends React.Component {
 
+<<<<<<< HEAD
 export default function App() {
   return (
     <div className="Global">
@@ -61,27 +63,53 @@ export default function App() {
     </div>
   );
 }
+=======
+    constructor(props){
+
+      super(props);
+
+      this.state = {
+        user: ""
+      }
+>>>>>>> 318aff91374dbd9ef51740e250de04fb04302433
+
+    }
 
 
+  
+    handleLogin = (e)=>{
+      this.setState({user:e});
+    };
 
-// function App(){
-//   return (
-//     <div>
-      
-//       <div>
-//         <Banner />
-//         </div>
-//       <div>
-//         <House />
-//         </div>
-//       <div>
-//         <Footer/>
-//         </div>  
-//     </div>
-//   );
-// }
+    handleLogout = ()=>{
+      this.setState({user:""});
+    };
+    
 
+    render(){
+      return (
+      <Router>
+        <div>
+          <Banner />
+        </div>
+        <div>
+          <Switch>
+            <Route path="/my-pet">
+              <House onLogout={this.handleLogout}/>
+            </Route>
+            <Route path="/">
+              <h1>{"Salut "+this.state.user}</h1>
+              <Welcome handleSubmit={this.handleLogin}/>
+            </Route>
+          </Switch>
+        </div>
+        
+        <div className="container-footer">
+          <Footer/>
+        </div> 
+      </Router>
+    );
+  }
+}
 
-
-// export default App;
 

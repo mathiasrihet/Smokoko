@@ -1,33 +1,50 @@
 import React from 'react';
+<<<<<<< HEAD
 import  './styles/Welcome.css';
+=======
+import { withRouter } from 'react-router-dom';
+>>>>>>> 318aff91374dbd9ef51740e250de04fb04302433
 
-export default class Welcome extends React.Component{
+class Welcome extends React.Component{
     constructor(props) {
-        super(props);//cannot use "this" keyword until "super(props);" has been placed
+        super(props);
+        this.state = {value: ''};
+    
+        this.handleChange = this.handleChange.bind(this);
+      }
+    
+    handleChange = (event)=>{
+        this.setState({value: event.target.value});
+        event.preventDefault();
+      }
 
-        //initialization of the attributes of the application state
-        this.state = {
-            my__name: ""
-        };
-
-        this.answer_ref = React.createRef();//allows to create a reference to a DOM element
-
-    }
-
-    on_submit_form = (e) => {
-        e.preventDefault();//avoid reloading the page
-        this.setState({ my_name: this.answer_ref.current.value });//update of the state by taking the value of a referenced input
-    }
-
+    handleSubmit = (event)=>{
+        this.props.handleSubmit(this.state.value)
+        this.props.history.push("/my-pet")
+        event.preventDefault();
+      }
+    
     render(){
-        return(
-        <div>
-        <div>{"Welcome " + this.state.my_name}</div>
-        <form onSubmit={this.on_submit_form}>
-            <input placeholder="enter your name" type="text" ref={this.answer_ref} />
-            <input type="submit" value="log in" />
+        return (
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Pseudo :
+            <input type="text" value={this.state.value} onChange={this.handleChange}/>
+          </label>
+          <input type="submit" value="Log in" />
         </form>
-        </div>
-        ) 
-    }
+      );
+        // return(
+        // <div>
+        //     <div>{"Welcome " + this.state.my_name}</div>
+        //     <form onSubmit={this.on_submit_form}>
+        //         <input placeholder="enter your name" type="text" ref={this.answer_ref} />
+        //         <input type="submit" value="log in" />
+        //     </form>
+        // </div>
+        // ) 
+        }
 }
+
+
+export default withRouter(Welcome);
