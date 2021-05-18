@@ -42,7 +42,7 @@ export default class App extends React.Component {
           <div>
             <Switch>
               <Route path="/my-pet">
-                <House onLogout={this.handleLogout}/>
+                <House onLogout={this.handleLogout} currentUser={this.state.user}/>
               </Route>
               <Route path="/">
                 <h1>{"Salut "+this.state.user}</h1>

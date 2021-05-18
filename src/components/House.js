@@ -22,12 +22,12 @@ class House extends React.Component {
             playLevel : 100,
             smokingScore: 1,
             timeToBed : 0,
-            decreaseRateEnergy : 10000,
-            decreaseRateHunger : 10000,
-            decreaseRatePlay : 10000,
+            decreaseRateEnergy : 25,
+            decreaseRateHunger : 25,
+            decreaseRatePlay : 25,
             decreaseRateSmoke : 25,
             lastUpdateTime : d.getTime(),
-            speed : 1,
+            speed : 360,
             feeling : "normal",
         };
     }
@@ -52,10 +52,10 @@ class House extends React.Component {
 
     getLastPeufRecord(pseudo){
         API.get('/Peufs', {params : {pseu : pseudo}})
-            //.then(resp => {console.log(resp.data[resp.data.length - 1]);})
-            .then(resp => {
-                this.setState({lastPeuf : resp.data[resp.data.length - 1],});
-            });
+            .then(resp => {console.log(resp.data[resp.data.length - 1]);})
+            // .then(resp => {
+            //     this.setState({lastPeuf : resp.data[resp.data.length - 1],});
+            // });
     }
 
     componentDidMount() {
@@ -63,7 +63,7 @@ class House extends React.Component {
     }
 
     updateLevels(){
-        this.getLastPeufRecord("Essie");
+        this.getLastPeufRecord(this.props.currentUser);
 
         let time = this.getTime();
         
@@ -120,9 +120,10 @@ class House extends React.Component {
         }
 
         let alpha = (100 - this.state.smoke) / 100
+        alpha = alpha*0.8+0.2
         this.setState({sleepLevel : this.state.sleepLevel + alpha * (100 - this.state.sleepLevel)});
         //Rend le pet indispo pendant 2 heures 
-        this.setState({timeToBed : this.getTime() + this.hoursToMs(2)});
+        this.setState({timeToBed : this.getTime() + this.hoursToMs(2/this.state.speed)});
         this.setState({feeling : "sleepy"});
     }
 
@@ -141,7 +142,7 @@ class House extends React.Component {
 
         if (this.state.feeling !== "angry"){
             this.setState({playLevel : Math.min(this.state.playLevel + 10, 100)});
-            this.setState({sleepLevel : Math.max(this.state.sleepLevel - 10, 0)});
+            this.setState({sleepLevel : Math.max(this.state.sleepLevel - 5, 0)});
         }else {
             /*Send a message and make the pet unusable for some time*/
         }
