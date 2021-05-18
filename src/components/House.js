@@ -13,7 +13,9 @@ class House extends React.Component {
     constructor(props){
         super(props);
         //Récupérer données depuis API pour les mettre dans le state
+
         let d = new Date();
+
         this.state = {
             smoke: 50,
             petIsAlive: true,
@@ -27,9 +29,16 @@ class House extends React.Component {
             decreaseRatePlay : 25,
             decreaseRateSmoke : 25,
             lastUpdateTime : d.getTime(),
-            speed : 360,
+            speed : 1,
             feeling : "normal",
         };
+
+        API.get('/People', {params : {pseudo : this.props.currentUser}})
+            // .then(resp => {console.log(resp.data[resp.data.length - 1]);})
+            .then(resp => {
+                this.setState({objnic:resp.data[0].objnic});
+                this.setState({qtnic:resp.data[0].qtnic});
+            });
     }
 
 
@@ -52,10 +61,10 @@ class House extends React.Component {
 
     getLastPeufRecord(pseudo){
         API.get('/Peufs', {params : {pseu : pseudo}})
-            .then(resp => {console.log(resp.data[resp.data.length - 1]);})
-            // .then(resp => {
-            //     this.setState({lastPeuf : resp.data[resp.data.length - 1],});
-            // });
+            // .then(resp => {console.log(resp.data[resp.data.length - 1]);})
+            .then(resp => {
+                this.setState({lastPeuf : resp.data[resp.data.length - 1],});
+            });
     }
 
     componentDidMount() {
@@ -87,7 +96,13 @@ class House extends React.Component {
         Make hungerLevel decrease depending on smoking quantity
         timeSinceUpdate is expressed in hours
         */
-        this.setState({hungerLevel : Math.max(this.state.hungerLevel - this.state.decreaseRateHunger * timeSinceUpdate * this.state.speed, 0)});
+        const seuilNic = [2,4,8,11,18]
+
+
+        let alpha = Math.max(1,(seuilNic.indexOf(this.state.qtnic)-seuilNic.indexOf(this.state.objnic))*0.5+1)
+
+
+        this.setState({hungerLevel : Math.max(this.state.hungerLevel - this.state.decreaseRateHunger * timeSinceUpdate * alpha * this.state.speed, 0)});
     }
 
     updateSleep(timeSinceUpdate){
@@ -137,6 +152,7 @@ class House extends React.Component {
     }
 
     onClickPlay = () => {
+
         /*Make the play level increase and the energy level decrease*/
         if (this.getTime() < this.state.timeToBed){return null;}
 
@@ -160,6 +176,11 @@ class House extends React.Component {
         
         return(
             <div className="wrapper">
+            {/* <style jsx>
+            .smoke-img{`
+                    opacity:{}
+                `}
+            </style> */}
                <button className="log-out" onClick = {this.handleLogout}>Log out</button>
             
                <div>
