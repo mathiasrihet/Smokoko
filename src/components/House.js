@@ -178,22 +178,15 @@ class House extends React.Component {
 
     onClickPlay = () => {
 
-        API.get('/People', {params : {pseudo : this.props.currentUser}})
-            // .then(resp => {console.log(resp.data[resp.data.length - 1]);})
-            .then(resp => {
-                console.log(resp.data[0].tamas[0])
-                
-                });
+        /*Make the play level increase and the energy level decrease*/
+        if (this.getTime() < this.state.timeToBed){return null;}
 
-        // /*Make the play level increase and the energy level decrease*/
-        // if (this.getTime() < this.state.timeToBed){return null;}
-
-        // if (this.state.feeling !== "angry"){
-        //     this.setState({playLevel : Math.min(this.state.playLevel + 10, 100)});
-        //     this.setState({sleepLevel : Math.max(this.state.sleepLevel - 5, 0)});
-        // }else {
-        //     /*Send a message and make the pet unusable for some time*/
-        // }
+        if (this.state.feeling !== "angry"){
+            this.setState({playLevel : Math.min(this.state.playLevel + 10, 100)});
+            this.setState({sleepLevel : Math.max(this.state.sleepLevel - 5, 0)});
+        }else {
+            /*Send a message and make the pet unusable for some time*/
+        }
         
     }
 
