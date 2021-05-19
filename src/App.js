@@ -14,7 +14,6 @@ import  './App.css';
 export default class App extends React.Component {
 
     constructor(props){
-
       super(props);
       this.state = {
         user: ""
@@ -23,13 +22,12 @@ export default class App extends React.Component {
 
     handleLogin = (e)=>{
       this.setState({user:e});
-      console.log(this.state.user)
     };
 
     handleLogout = ()=>{
       this.setState({user:""});
     };
-
+  
 
     render(){
       return (

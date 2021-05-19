@@ -4,17 +4,24 @@ import API from './api'
 export default class Pet extends React.Component {
     constructor(props){
         super(props);
-        this.state={}
+        this.state={
+            normal : "",
+            angry : "",
+            sleepy : "",
+        }
 
-        API.get('/Tamas', {params : {nom : props.name}})
-            .then(resp => {
-                this.setState({
-                    normal: resp.data[0].normal.url,
-                    angry : resp.data[0].angry.url,
-                    sleepy : resp.data[0].sleepy.url,
+        API.get('/People', {params : {pseudo : this.props.name}})
+            .then(resp => { 
+                if (resp.data.length>0){
+                    this.setState({
+                        normal: resp.data[0].tamas[0].normal.url,
+                        angry : resp.data[0].tamas[0].angry.url,
+                        sleepy : resp.data[0].tamas[0].sleepy.url,
+                    });
+                }
             });
-        });
     };
+
 
     
 

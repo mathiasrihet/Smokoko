@@ -11,8 +11,6 @@ import smoke from '../assets/smoke.png';
 import  './styles/House.css';
 
 
-
-
 class House extends React.Component {
     constructor(props){
         super(props);
@@ -22,12 +20,10 @@ class House extends React.Component {
 
         this.state = {
             petIsAlive: true,
-            smokingScore: 1,
             timeToBed : 0,
             decreaseRateEnergy : 25,
             decreaseRateHunger : 25,
             decreaseRatePlay : 25,
-            decreaseRateSmoke : 25,
             lastUpdateTime : d.getTime(),
             speed : 1,
             feeling : "normal",
@@ -47,7 +43,7 @@ class House extends React.Component {
                     sleepLevel : resp.data[0].tamas[0].energie,
                     playLevel : resp.data[0].tamas[0].plaisir,
                     smoke : resp.data[0].tamas[0].smoke,
-                    tama : resp.data[0].tamas[0].nom,
+                    lastHourVap : resp.data[0].vaps[resp.data.length - 1].total 
                 });
             });
     }
@@ -60,14 +56,8 @@ class House extends React.Component {
             sleepLevel : 100,
             playLevel : 100,
             smoke : 50,
-            tama : "bulbi",
+            lastHourVap : 99,
         });
-    }
-
-
-    getScore(){
-        /*return a score between 0 and 1 reflecting user performance*/
-        return 1;
     }
 
     msToHours(ms){
@@ -86,10 +76,12 @@ class House extends React.Component {
         if (this.props.currentUser !== ""){
         API.get('/Vaps', {params : {pseu : pseudo}})
             .then(resp => {
-                this.setState({lastHourVap : resp.data[resp.data.length - 1].total});
+                if (resp.data.length>0){
+                    this.setState({lastHourVap : resp.data[resp.data.length - 1].total});
+                }
             });
         }else{
-            this.setState({lastHourVap : 99})
+            this.setState({lastHourVap : Math.random()*200 - 100})
         }
     }
 
@@ -133,9 +125,7 @@ class House extends React.Component {
         */
         const seuilNic = [2,4,8,11,18]
 
-
         let alpha = Math.max(1,(seuilNic.indexOf(this.state.qtnic)-seuilNic.indexOf(this.state.objnic))*0.5+1)
-
 
         this.setState({hungerLevel : Math.max(this.state.hungerLevel - this.state.decreaseRateHunger * timeSinceUpdate * alpha * this.state.speed, 0)});
     }
@@ -158,7 +148,11 @@ class House extends React.Component {
         /*
         make the smoke decrease by evaporation and increase depending on smoking quantity
         */
-        this.setState({smoke : Math.max(this.state.smoke - this.state.decreaseRateSmoke * timeSinceUpdate * this.state.speed, 0)})
+
+        let newsmoke = this.state.smoke + (this.state.lastHourVap - this.state.objvap) * timeSinceUpdate * this.state.speed
+
+        this.setState({smoke : Math.min(Math.max(newsmoke, 0),100)})
+
         let smoke_img = document.getElementsByClassName('smoke-img');
         if(smoke_img[0]){
         smoke_img[0].style.opacity = this.state.smoke/100
@@ -191,7 +185,6 @@ class House extends React.Component {
     }
 
     onClickPlay = () => {
-
         /*Make the play level increase and the energy level decrease*/
         if (this.getTime() < this.state.timeToBed){return null;}
 
@@ -221,7 +214,7 @@ class House extends React.Component {
             
                 <div>
                     <div className="pet-area">   
-                        <Pet feeling = {this.state.feeling} name={this.state.tama}/>
+                        <Pet feeling = {this.state.feeling} name={this.props.currentUser}/>
                         <img class="superpose" className="pet-area-img"  src={gameBackground} alt="Background"/>
                         <img class="superpose" className="smoke-img"  src={smoke} />
                     </div>
