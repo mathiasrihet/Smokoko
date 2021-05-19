@@ -36,23 +36,25 @@ class House extends React.Component {
     initUser = ()=>{
         API.get('/People', {params : {pseudo : this.props.currentUser}})
             .then(resp => {
-                this.setState({objnic:resp.data[0].objnic,
-                    qtnic:resp.data[0].qtnic,
+                this.setState({objnic : resp.data[0].objnic,
+                    qtnic : resp.data[0].qtnic,
                     hungerLevel: resp.data[0].tamas[0].faim,
                     sleepLevel : resp.data[0].tamas[0].energie,
                     playLevel : resp.data[0].tamas[0].plaisir,
-                    smoke: resp.data[0].tamas[0].smoke,
+                    smoke : resp.data[0].tamas[0].smoke,
+                    tama : resp.data[0].tamas[0].nom,
                 });
             });
     }
 
     initDemo = ()=>{
-        this.setState({objnic:2,
-            qtnic:2,
+        this.setState({objnic : 2,
+            qtnic : 2,
             hungerLevel : 40,
             sleepLevel : 100,
             playLevel : 100,
-            smoke: 50,
+            smoke : 50,
+            tama : "bulbi",
         });
     }
 
@@ -177,6 +179,8 @@ class House extends React.Component {
     }
 
     onClickPlay = () => {
+        
+        console.log(this.state.tama)
 
         /*Make the play level increase and the energy level decrease*/
         if (this.getTime() < this.state.timeToBed){return null;}
@@ -210,7 +214,7 @@ class House extends React.Component {
             
                <div>
                     <div className="pet-area">   
-                        <Pet />
+                        <Pet feeling = {this.state.feeling} name={this.state.tama}/>
                         <img class="superpose" className="pet-area-img"  src={gameBackground} alt="Background"/>
                         <img class="superpose" className="smoke-img"  src={smoke} />
                     </div>

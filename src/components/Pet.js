@@ -1,17 +1,26 @@
 import React from 'react';
-import char from '../assets/m2.png';
-
+import API from './api'
 
 export default class Pet extends React.Component {
     constructor(props){
         super(props);
-        this.state = {
-            IsAlive: true,
-            IsFriendly: true
-        };
-    }
+        this.state={}
+
+        API.get('/Tamas', {params : {nom : props.name}})
+            .then(resp => {
+                this.setState({
+                    normal: resp.data[0].normal.url,
+                    angry : resp.data[0].angry.url,
+                    sleepy : resp.data[0].sleepy.url,
+            });
+        });
+    };
+
+    
 
     render(){
+        console.log(this.state.normal)
+
         return(
             <div>
                 <style jsx>
@@ -39,9 +48,10 @@ export default class Pet extends React.Component {
           `}
                 </style>
                     <div className="pet">
-                        <img className="pet-img" src={char}/>
+                        <img className="pet-img" src={"http://localhost:1337"+this.state[this.props.feeling]} alt={this.props.feeling}/>
                     </div>
                 </div>
         )
     }
 }
+// src={this.state[this.props.feeling]}

@@ -1,6 +1,5 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import API from './api'
 import  './styles/Welcome.css';
 
 class Welcome extends React.Component{
