@@ -80,6 +80,8 @@ class House extends React.Component {
         //Convert it depending on units of decrease selected
         
         this.setState({lastUpdateTime : time,});
+
+        this.updateSmoke(timeSinceUpdate);
         
         this.updateHunger(timeSinceUpdate);
         if (this.getTime() > this.state.timeToBed){
@@ -124,6 +126,8 @@ class House extends React.Component {
         make the smoke decrease by evaporation and increase depending on smoking quantity
         */
         this.setState({smoke : Math.max(this.state.smoke - this.state.decreaseRateSmoke * timeSinceUpdate * this.state.speed, 0)})
+        let smoke_img = document.getElementsByClassName('smoke-img');
+        smoke_img[0].style.opacity = this.state.smoke/100
     }
 
     onClickSleep = () => {
