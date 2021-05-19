@@ -1,16 +1,14 @@
 import React from 'react';
+import Banner from './components/Banner.js';
+import Footer from './components/Footer.js';
+import House from './components/House.js';
+import Welcome from './components/Welcome.js';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
-import Banner from './components/Banner.js';
-import Footer from './components/Footer.js';
-import House from './components/House.js';
-import Welcome from './components/Welcome.js';
 import  './App.css';
-
-
 
 
 export default class App extends React.Component {

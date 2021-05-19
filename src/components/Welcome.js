@@ -29,18 +29,12 @@ class Welcome extends React.Component{
            
             <h1> Bienvenue </h1>
             <form  className="form" onSubmit={this.handleSubmit}>
-                <p></p>
-                    
-                <label className="label"> Pseudo  </label>    
-                 <input className="input1" type="text" value={this.state.value} onChange={this.handleChange}/>
-                 
+              <label className="label"> Pseudo  </label>    
+                <input className="input1" type="text" value={this.state.value} onChange={this.handleChange}/>
                 <input className="input2" type="submit" value="Log in" />
                   
-          <div className="vide">
-            <p></p>
-            
-          </div>
-        </form>
+              <div className="vide"/>
+            </form>
         </div>
       );
     }

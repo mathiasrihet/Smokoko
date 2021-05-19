@@ -52,4 +52,3 @@ export default class Pet extends React.Component {
         )
     }
 }
-// src={this.state[this.props.feeling]}

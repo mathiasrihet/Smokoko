@@ -1,12 +1,16 @@
 import React from 'react';
-import gameBackground from '../assets/gameBackground.png';
-import smoke from '../assets/smoke3.png';
+import API from './api'
 import Pet from './Pet';
 import MyButton from './MyButton'
 import Gauge from './Gauge'
-import  './styles/House.css';
-import API from './api'
 import { withRouter } from 'react-router-dom';
+
+import gameBackground from '../assets/gameBackground.png';
+import smoke from '../assets/smoke.png';
+
+import  './styles/House.css';
+
+
 
 
 class House extends React.Component {
@@ -78,14 +82,14 @@ class House extends React.Component {
         return new Date().getTime();
     }
 
-    getLastPeufRecord(pseudo){
+    getLastVapRecord(pseudo){
         if (this.props.currentUser !== ""){
-        API.get('/Peufs', {params : {pseu : pseudo}})
+        API.get('/Vaps', {params : {pseu : pseudo}})
             .then(resp => {
-                this.setState({lastHourPeuf : resp.data[resp.data.length - 1].total});
+                this.setState({lastHourVap : resp.data[resp.data.length - 1].total});
             });
         }else{
-            this.setState({lastHourPeuf : 99})
+            this.setState({lastHourVap : 99})
         }
     }
 
@@ -94,7 +98,7 @@ class House extends React.Component {
     }
 
     updateLevels(){
-        this.getLastPeufRecord(this.props.currentUser);
+        this.getLastVapRecord(this.props.currentUser);
 
         let time = this.getTime();
         
@@ -115,7 +119,7 @@ class House extends React.Component {
     updateFeeling(){
         if (this.getTime() < this.state.timeToBed){
             this.setState({feeling : "sleepy"})
-        }else if(this.state.lastHourPeuf > this.state.objvap*1.1){
+        }else if(this.state.lastHourVap > this.state.objvap*1.1){
             this.setState({feeling : "angry"})
         }else{
             this.setState({feeling : "normal"})
@@ -212,9 +216,10 @@ class House extends React.Component {
         
         return(
             <div className="wrapper">
+            
                <button className="log-out" onClick = {this.handleLogout}>Log out</button>
             
-               <div>
+                <div>
                     <div className="pet-area">   
                         <Pet feeling = {this.state.feeling} name={this.state.tama}/>
                         <img class="superpose" className="pet-area-img"  src={gameBackground} alt="Background"/>
