@@ -17,11 +17,7 @@ class House extends React.Component {
         let d = new Date();
 
         this.state = {
-            smoke: 50,
             petIsAlive: true,
-            hungerLevel : 40,
-            sleepLevel : 100,
-            playLevel : 100,
             smokingScore: 1,
             timeToBed : 0,
             decreaseRateEnergy : 25,
@@ -34,11 +30,30 @@ class House extends React.Component {
         };
 
         API.get('/People', {params : {pseudo : this.props.currentUser}})
-            // .then(resp => {console.log(resp.data[resp.data.length - 1]);})
+            .then(resp =>(resp.data.length===1 ? this.initUser():this.initDemo()))
+    }
+
+    initUser = ()=>{
+        API.get('/People', {params : {pseudo : this.props.currentUser}})
             .then(resp => {
-                this.setState({objnic:resp.data[0].objnic});
-                this.setState({qtnic:resp.data[0].qtnic});
+                this.setState({objnic:resp.data[0].objnic,
+                    qtnic:resp.data[0].qtnic,
+                    hungerLevel: resp.data[0].tamas[0].faim,
+                    sleepLevel : resp.data[0].tamas[0].energie,
+                    playLevel : resp.data[0].tamas[0].plaisir,
+                    smoke: resp.data[0].tamas[0].smoke,
+                });
             });
+    }
+
+    initDemo = ()=>{
+        this.setState({objnic:2,
+            qtnic:2,
+            hungerLevel : 40,
+            sleepLevel : 100,
+            playLevel : 100,
+            smoke: 50,
+        });
     }
 
 
@@ -60,11 +75,15 @@ class House extends React.Component {
     }
 
     getLastPeufRecord(pseudo){
+        if (this.props.currentUser !== ""){
         API.get('/Peufs', {params : {pseu : pseudo}})
             // .then(resp => {console.log(resp.data[resp.data.length - 1]);})
             .then(resp => {
                 this.setState({lastPeuf : resp.data[resp.data.length - 1],});
             });
+        }else{
+            
+        }
     }
 
     componentDidMount() {
@@ -127,7 +146,9 @@ class House extends React.Component {
         */
         this.setState({smoke : Math.max(this.state.smoke - this.state.decreaseRateSmoke * timeSinceUpdate * this.state.speed, 0)})
         let smoke_img = document.getElementsByClassName('smoke-img');
+        if(smoke_img[0]){
         smoke_img[0].style.opacity = this.state.smoke/100
+        }
     }
 
     onClickSleep = () => {
@@ -157,15 +178,22 @@ class House extends React.Component {
 
     onClickPlay = () => {
 
-        /*Make the play level increase and the energy level decrease*/
-        if (this.getTime() < this.state.timeToBed){return null;}
+        API.get('/People', {params : {pseudo : this.props.currentUser}})
+            // .then(resp => {console.log(resp.data[resp.data.length - 1]);})
+            .then(resp => {
+                console.log(resp.data[0].tamas[0])
+                
+                });
 
-        if (this.state.feeling !== "angry"){
-            this.setState({playLevel : Math.min(this.state.playLevel + 10, 100)});
-            this.setState({sleepLevel : Math.max(this.state.sleepLevel - 5, 0)});
-        }else {
-            /*Send a message and make the pet unusable for some time*/
-        }
+        // /*Make the play level increase and the energy level decrease*/
+        // if (this.getTime() < this.state.timeToBed){return null;}
+
+        // if (this.state.feeling !== "angry"){
+        //     this.setState({playLevel : Math.min(this.state.playLevel + 10, 100)});
+        //     this.setState({sleepLevel : Math.max(this.state.sleepLevel - 5, 0)});
+        // }else {
+        //     /*Send a message and make the pet unusable for some time*/
+        // }
         
     }
 

@@ -1,15 +1,18 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import API from './api'
 import  './styles/Welcome.css';
 
 class Welcome extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {value: ''};
+        this.state = {
+          value: '',
+        };
 
         this.handleChange = this.handleChange.bind(this);
       }
-
+    
     handleChange = (event)=>{
         this.setState({value: event.target.value});
         event.preventDefault();
@@ -17,7 +20,7 @@ class Welcome extends React.Component{
 
     handleSubmit = (event)=>{
         this.props.handleSubmit(this.state.value)
-        this.props.history.push("/my-pet")
+        this.props.history.push("/my-pet");
         event.preventDefault();
       }
 

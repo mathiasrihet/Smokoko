@@ -25,6 +25,7 @@ export default class App extends React.Component {
 
     handleLogin = (e)=>{
       this.setState({user:e});
+      console.log(this.state.user)
     };
 
     handleLogout = ()=>{
@@ -45,7 +46,6 @@ export default class App extends React.Component {
                 <House onLogout={this.handleLogout} currentUser={this.state.user}/>
               </Route>
               <Route path="/">
-                <h1>{this.state.user}</h1>
                 <Welcome handleSubmit={this.handleLogin}/>
               </Route>
             </Switch>
