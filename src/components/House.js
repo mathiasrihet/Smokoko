@@ -102,19 +102,24 @@ class House extends React.Component {
         //Convert it depending on units of decrease selected
         
         this.setState({lastUpdateTime : time,});
+        this.updateFeeling();
 
         this.updateSmoke(timeSinceUpdate);
         this.updateHunger(timeSinceUpdate);
-        if (this.getTime() > this.state.timeToBed){
+        this.updatePlay(timeSinceUpdate);
+        if (this.state.feeling !== "sleepy"){
             this.updateSleep(timeSinceUpdate);
+        }
+    }
+
+    updateFeeling(){
+        if (this.getTime() < this.state.timeToBed){
+            this.setState({feeling : "sleepy"})
+        }else if(this.state.lastHourPeuf > this.state.objvap*1.1){
+            this.setState({feeling : "angry"})
+        }else{
             this.setState({feeling : "normal"})
         }
-
-        if(this.state.feeling !== "sleepy" && this.state.lastHourPeuf > this.state.objvap){
-            this.setState({feeling : "angry"})
-        }
-        this.updatePlay(timeSinceUpdate);
-
     }
 
     updateHunger(timeSinceUpdate){
@@ -169,7 +174,7 @@ class House extends React.Component {
         this.setState({sleepLevel : this.state.sleepLevel + alpha * (100 - this.state.sleepLevel)});
         //Rend le pet indispo pendant 2 heures 
         this.setState({timeToBed : this.getTime() + this.hoursToMs(2/this.state.speed)});
-        this.setState({feeling : "sleepy"});
+        // this.setState({feeling : "sleepy"});
     }
 
     onClickFeed = () => {
