@@ -19,8 +19,6 @@ export default class Pet extends React.Component {
     
 
     render(){
-        console.log(this.state.normal)
-
         return(
             <div>
                 <style jsx>

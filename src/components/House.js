@@ -38,6 +38,7 @@ class House extends React.Component {
             .then(resp => {
                 this.setState({objnic : resp.data[0].objnic,
                     qtnic : resp.data[0].qtnic,
+                    objvap : resp.data[0].objvap,
                     hungerLevel: resp.data[0].tamas[0].faim,
                     sleepLevel : resp.data[0].tamas[0].energie,
                     playLevel : resp.data[0].tamas[0].plaisir,
@@ -50,6 +51,7 @@ class House extends React.Component {
     initDemo = ()=>{
         this.setState({objnic : 2,
             qtnic : 2,
+            objvap : 100,
             hungerLevel : 40,
             sleepLevel : 100,
             playLevel : 100,
@@ -79,12 +81,11 @@ class House extends React.Component {
     getLastPeufRecord(pseudo){
         if (this.props.currentUser !== ""){
         API.get('/Peufs', {params : {pseu : pseudo}})
-            // .then(resp => {console.log(resp.data[resp.data.length - 1]);})
             .then(resp => {
-                this.setState({lastPeuf : resp.data[resp.data.length - 1],});
+                this.setState({lastHourPeuf : resp.data[resp.data.length - 1].total});
             });
         }else{
-            
+            this.setState({lastHourPeuf : 99})
         }
     }
 
@@ -103,15 +104,17 @@ class House extends React.Component {
         this.setState({lastUpdateTime : time,});
 
         this.updateSmoke(timeSinceUpdate);
-        
         this.updateHunger(timeSinceUpdate);
         if (this.getTime() > this.state.timeToBed){
             this.updateSleep(timeSinceUpdate);
             this.setState({feeling : "normal"})
         }
+
+        if(this.state.feeling !== "sleepy" && this.state.lastHourPeuf > this.state.objvap){
+            this.setState({feeling : "angry"})
+        }
         this.updatePlay(timeSinceUpdate);
 
-        //Update le feeling angry
     }
 
     updateHunger(timeSinceUpdate){
@@ -179,8 +182,6 @@ class House extends React.Component {
     }
 
     onClickPlay = () => {
-        
-        console.log(this.state.tama)
 
         /*Make the play level increase and the energy level decrease*/
         if (this.getTime() < this.state.timeToBed){return null;}
@@ -205,11 +206,6 @@ class House extends React.Component {
         
         return(
             <div className="wrapper">
-            {/* <style jsx>
-            .smoke-img{`
-                    opacity:{}
-                `}
-            </style> */}
                <button className="log-out" onClick = {this.handleLogout}>Log out</button>
             
                <div>
