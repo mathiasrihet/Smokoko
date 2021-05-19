@@ -191,6 +191,7 @@ class House extends React.Component {
             this.setState({sleepLevel : Math.max(this.state.sleepLevel - 5, 0)});
         }else {
             /*Send a message and make the pet unusable for some time*/
+            alert("Nop.")
         }
         
     }
