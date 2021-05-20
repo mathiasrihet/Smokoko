@@ -44,7 +44,8 @@ yarn
 
 En l'état, le prototype ne peut fonctionner sans api. Cependant, l'api est déjà initialisée avec 3 utilisateurs typiques. L'utilisation de createdata_repository est donc complètement optionnelle.
 
-## Lancement de l'api (http://localhost:1337/ par défault)
+## Lancement de l'api 
+http://localhost:1337/ par défault
 
 ```
 cd api_repository
@@ -53,7 +54,8 @@ cd api_repository
 npm start
 ```
 
-## PUIS Lancement du prototype (http://localhost:3000/ par défaut)
+## PUIS Lancement du prototype 
+http://localhost:3000/ par défaut
 
 ```
 cd tama_repository
