@@ -8,7 +8,7 @@ Dépôt contenant tous les éléments nécessaires au lancement d'un prototype d
 ```
 cd api_repository
 ```
-Le dossier api_repository permet de lancer une api contenant les profils de 3 utilisateurs :
+Le dossier api_repository utilise Strapi pour simuler une api contenant les profils de 3 utilisateurs :
 - Sidney fume beaucoup et ne respecte aucun de ses objectifs.
 - Gladys fume peu et respecte tous ses objectifs.
 - Nick fume moyennement, consomme beaucoup trop de nicotine mais ne dépasse pas le nombre de vap qu'il s'est fixé.
