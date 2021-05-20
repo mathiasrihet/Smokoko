@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tamas",
+  "info": {
+    "name": "tama",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nom": {
+      "type": "string"
+    },
+    "energie": {
+      "type": "integer"
+    },
+    "faim": {
+      "type": "integer"
+    },
+    "plaisir": {
+      "type": "integer"
+    },
+    "person": {
+      "model": "people",
+      "via": "tamas"
+    },
+    "pseud": {
+      "type": "string"
+    },
+    "smoke": {
+      "type": "integer"
+    },
+    "angry": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "sleepy": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "normal": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "people",
+  "info": {
+    "name": "people",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pseudo": {
+      "type": "string"
+    },
+    "objvap": {
+      "type": "integer"
+    },
+    "objnic": {
+      "type": "integer"
+    },
+    "qtnic": {
+      "type": "integer"
+    },
+    "tamas": {
+      "via": "person",
+      "collection": "tama"
+    },
+    "vaps": {
+      "via": "person",
+      "collection": "vaps"
+    }
+  }
+}

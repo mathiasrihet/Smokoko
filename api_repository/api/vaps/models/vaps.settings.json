@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "vaps",
+  "info": {
+    "name": "Vaps",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "total": {
+      "type": "integer"
+    },
+    "pseu": {
+      "type": "string"
+    },
+    "person": {
+      "model": "people",
+      "via": "vaps"
+    },
+    "temps": {
+      "type": "time"
+    }
+  }
+}
