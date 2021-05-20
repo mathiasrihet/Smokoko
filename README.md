@@ -40,12 +40,12 @@ ou
 ```
 yarn
 ```
-
-### Lancement du prototype
+---
+## Lancement du prototype
 
 En l'état, le prototype ne peut fonctionner sans api. Cependant, l'api est déjà initialisée avec 3 utilisateurs typiques. L'utilisation de createdata_repository est donc complètement optionnelle.
 
-## Lancement de l'api 
+### Lancement de l'api 
 http://localhost:1337/ par défault
 
 ```
@@ -55,7 +55,7 @@ cd api_repository
 npm start
 ```
 
-## PUIS Lancement du prototype 
+### PUIS Lancement de l'application
 http://localhost:3000/ par défaut
 
 ```
