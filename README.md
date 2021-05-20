@@ -17,8 +17,8 @@ Le dossier api_repository utilise Strapi pour simuler une api contenant les prof
 cd createdata_repository
 ```
 Le dossier createdata_repository permet de lancer un script ajoutant 3 utilisateurs à l'api. 
-Ces 3 utilisateurs reflèteront les 3 profils décrits ci-dessus.
-\n:bangbang: Le script génère des données mais pas d'images, il faudra donc ajouter les skins de tamagotchi à la main :bangbang:
+Ces 3 utilisateurs reflèteront les 3 profils décrits ci-dessus.  
+:bangbang: Le script génère des données mais pas d'images, il faudra donc ajouter les skins de tamagotchi à la main :bangbang:
 
 ```
 cd tama_repository
