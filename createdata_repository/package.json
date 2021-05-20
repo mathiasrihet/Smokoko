@@ -1,0 +1,19 @@
+{
+  "name": "one-step-forward-faker",
+  "version": "1.0.0",
+  "description": "Génération de données fictives pour le remplissage de la base de données du projet One Step Forward",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexandre Leroux <alex@sherpa.one> (https://sherpa.one)",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "faker": "^5.5.3",
+    "moment": "^2.29.1",
+    "nodemon": "^2.0.7"
+  }
+}
