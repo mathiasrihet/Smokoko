@@ -22,7 +22,7 @@ Ces 3 utilisateurs reflèteront les 3 profils décrits ci-dessus.
 ```
 cd tama_repository
 ```
-Le dossier tama_repository constitue le coeur du projet.
+Le dossier tama_repository constitue le coeur du projet. Son principe de fonctionnement est détaillé dans notice.pdf
 
 ---
 
