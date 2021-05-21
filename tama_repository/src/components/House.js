@@ -224,26 +224,26 @@ class House extends React.Component {
                 <div className="containers">
                     <div className="container1">
                         <div className="containergauge1">
-                            <Gauge className="gauge" value={this.state.playLevel} label={'Plaisir'} colorRange={["#ffe6f9", "#b30086"]}/>
+                            <Gauge className="gauge" value={this.state.playLevel} label={'joy'} colorRange={["#ffe6f9", "#b30086"]}/>
                         </div>
                         <div className="containerbutton1">
-                            <MyButton type='jouer' handleThis={this.onClickPlay}/>
+                            <MyButton type='play' handleThis={this.onClickPlay}/>
                         </div>
                     </div>
                     <div className="container2">
                         <div className="containergauge2">
-                            <Gauge className="gauge" value={this.state.hungerLevel} label={'Faim'} colorRange={["#fffedc", "#ff9200"]}/>
+                            <Gauge className="gauge" value={this.state.hungerLevel} label={'hunger'} colorRange={["#fffedc", "#ff9200"]}/>
                         </div>
                         <div className="containerbutton2">
-                            <MyButton type='manger' handleThis={this.onClickFeed}/>
+                            <MyButton type='eat' handleThis={this.onClickFeed}/>
                         </div>
                     </div>
                     <div className="container3">
                         <div className="containergauge3">
-                            <Gauge className="gauge" value={this.state.sleepLevel} label = {'Energie'} colorRange={["#dbdbe7", "#4834d4"]}/>
+                            <Gauge className="gauge" value={this.state.sleepLevel} label = {'energy'} colorRange={["#dbdbe7", "#4834d4"]}/>
                         </div>
                         <div className="containerbutton3">
-                            <MyButton type='dormir' handleThis={this.onClickSleep}/>
+                            <MyButton type='sleep' handleThis={this.onClickSleep}/>
                         </div>
                     </div> 
                 </div> 

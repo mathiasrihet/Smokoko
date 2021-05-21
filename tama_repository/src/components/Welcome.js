@@ -27,7 +27,7 @@ class Welcome extends React.Component{
         return (
         <div className="page-acceuil">
            
-            <h1> Bienvenue </h1>
+            <h1> Welcome </h1>
             <form  className="form" onSubmit={this.handleSubmit}>
               <label className="label"> Pseudo  </label>    
                 <input className="input1" type="text" value={this.state.value} onChange={this.handleChange}/>
