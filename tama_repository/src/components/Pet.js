@@ -14,9 +14,9 @@ export default class Pet extends React.Component {
             .then(resp => { 
                 if (resp.data.length>0){
                     this.setState({
-                        normal: resp.data[0].tamagotchis[0].normal.url,
-                        angry : resp.data[0].tamagotchis[0].angry.url,
-                        sleepy : resp.data[0].tamagotchis[0].sleepy.url,
+                        normal: (resp.data[0].tamagotchis[0].normal ? resp.data[0].tamagotchis[0].normal.url:""),
+                        angry : (resp.data[0].tamagotchis[0].angry ? resp.data[0].tamagotchis[0].angry.url:""),
+                        sleepy : (resp.data[0].tamagotchis[0].sleepy ? resp.data[0].tamagotchis[0].sleepy.url:""),
                     });
                 }
             });
