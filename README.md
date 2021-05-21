@@ -8,10 +8,7 @@ Dépôt contenant tous les éléments nécessaires au lancement d'un prototype d
 ```
 cd api_repository
 ```
-Le dossier api_repository utilise Strapi pour simuler une api contenant 3 collections :
--People
--Tamagotchis
--Vaps
+Le dossier api_repository utilise Strapi pour simuler une api contenant 3 collections : People, Tamagotchis et Vaps
 
 
 ```
