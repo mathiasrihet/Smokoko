@@ -36,9 +36,9 @@ const get_fake_people = (a, b, c, d) => {
 const get_fake_vap = (hour, people, a, b) => {
 
     return {
-        temps: moment().add(hour,'hours').format("hh:mm:ss"),//format for sqlite
+        time: moment().add(hour,'hours').format("hh:mm:ss"),//format for sqlite
         total: random_int_from_interval(a, b),
-        pseu: people.pseudo,
+        pseudo: people.pseudo,
         person: people.id
     };
 }
@@ -46,12 +46,12 @@ const get_fake_vap = (hour, people, a, b) => {
 const get_fake_tama = (nickname, people, a, b) => {
 
     return {
-        nom : nickname,
-        energie: random_int_from_interval(0, 100),
-        faim: random_int_from_interval(0, 100),
-        plaisir: random_int_from_interval(0, 100),
+        name : nickname,
+        energy: random_int_from_interval(0, 100),
+        hunger: random_int_from_interval(0, 100),
+        joy: random_int_from_interval(0, 100),
         smoke: random_int_from_interval(a, b),
-        pseud: people.pseudo,
+        pseudo: people.pseudo,
         person: people.id
     };
 }
@@ -135,7 +135,7 @@ const get_fake_tama = (nickname, people, a, b) => {
     
             if (a_people.objnic == taux_de_nicotine[0]){
                 try {
-                    await axios_instance.post('/tamas', get_fake_tama(tama_nickname[n], a_people,90,100));
+                    await axios_instance.post('/tamagotchis', get_fake_tama(tama_nickname[n], a_people,90,100));
                 } catch (error) {
                 console.error(error);
                 }
@@ -143,7 +143,7 @@ const get_fake_tama = (nickname, people, a, b) => {
             }
             else if (a_people.objnic == taux_de_nicotine[2]){
                 try {
-                    await axios_instance.post('/tamas', get_fake_tama(tama_nickname[n], a_people,10,30));
+                    await axios_instance.post('/tamagotchis', get_fake_tama(tama_nickname[n], a_people,10,30));
                 } catch (error) {
                 console.error(error);
                 }
@@ -151,7 +151,7 @@ const get_fake_tama = (nickname, people, a, b) => {
             }
             else if (a_people.objnic == taux_de_nicotine[1]){
                 try {
-                    await axios_instance.post('/tamas', get_fake_tama(tama_nickname[n], a_people,48,51));
+                    await axios_instance.post('/tamagotchis', get_fake_tama(tama_nickname[n], a_people,48,51));
                 } catch (error) {
                 console.error(error);
                 }

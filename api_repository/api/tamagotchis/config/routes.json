@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/tamas",
-      "handler": "tama.find",
+      "path": "/tamagotchis",
+      "handler": "tamagotchis.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/tamas/count",
-      "handler": "tama.count",
+      "path": "/tamagotchis/count",
+      "handler": "tamagotchis.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/tamas/:id",
-      "handler": "tama.findOne",
+      "path": "/tamagotchis/:id",
+      "handler": "tamagotchis.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/tamas",
-      "handler": "tama.create",
+      "path": "/tamagotchis",
+      "handler": "tamagotchis.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/tamas/:id",
-      "handler": "tama.update",
+      "path": "/tamagotchis/:id",
+      "handler": "tamagotchis.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/tamas/:id",
-      "handler": "tama.delete",
+      "path": "/tamagotchis/:id",
+      "handler": "tamagotchis.delete",
       "config": {
         "policies": []
       }

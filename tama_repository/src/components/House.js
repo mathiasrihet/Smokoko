@@ -39,11 +39,11 @@ class House extends React.Component {
                 this.setState({objnic : resp.data[0].objnic,
                     qtnic : resp.data[0].qtnic,
                     objvap : resp.data[0].objvap,
-                    hungerLevel: resp.data[0].tamas[0].faim,
-                    sleepLevel : resp.data[0].tamas[0].energie,
-                    playLevel : resp.data[0].tamas[0].plaisir,
-                    smoke : resp.data[0].tamas[0].smoke,
-                    lastHourVap : resp.data[0].vaps[resp.data.length - 1].total 
+                    hungerLevel: resp.data[0].tamagotchis[0].hunger,
+                    sleepLevel : resp.data[0].tamagotchis[0].energy,
+                    playLevel : resp.data[0].tamagotchis[0].joy,
+                    smoke : resp.data[0].tamagotchis[0].smoke,
+                    lastHourVap : resp.data[0].vap[resp.data.length - 1].total 
                 });
             });
     }

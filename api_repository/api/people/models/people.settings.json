@@ -24,13 +24,13 @@
     "qtnic": {
       "type": "integer"
     },
-    "tamas": {
-      "via": "person",
-      "collection": "tama"
+    "vap": {
+      "collection": "vaps",
+      "via": "person"
     },
-    "vaps": {
+    "tamagotchis": {
       "via": "person",
-      "collection": "vaps"
+      "collection": "tamagotchis"
     }
   }
 }

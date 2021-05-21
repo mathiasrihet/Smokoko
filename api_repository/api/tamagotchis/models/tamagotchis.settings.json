@@ -1,9 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "tamas",
+  "collectionName": "tamagotchis",
   "info": {
-    "name": "tama",
-    "description": ""
+    "name": "tamagotchis"
   },
   "options": {
     "increments": true,
@@ -12,23 +11,19 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "nom": {
+    "name": {
       "type": "string"
     },
-    "energie": {
+    "energy": {
       "type": "integer"
     },
-    "faim": {
+    "hunger": {
       "type": "integer"
     },
-    "plaisir": {
+    "joy": {
       "type": "integer"
     },
-    "person": {
-      "model": "people",
-      "via": "tamas"
-    },
-    "pseud": {
+    "pseudo": {
       "type": "string"
     },
     "smoke": {
@@ -69,6 +64,10 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
+    },
+    "person": {
+      "model": "people",
+      "via": "tamagotchis"
     }
   }
 }

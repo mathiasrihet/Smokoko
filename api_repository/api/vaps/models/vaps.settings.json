@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "vaps",
   "info": {
-    "name": "Vaps",
+    "name": "Vap",
     "description": ""
   },
   "options": {
@@ -15,15 +15,15 @@
     "total": {
       "type": "integer"
     },
-    "pseu": {
+    "pseudo": {
       "type": "string"
     },
-    "person": {
-      "model": "people",
-      "via": "vaps"
-    },
-    "temps": {
+    "time": {
       "type": "time"
+    },
+    "person": {
+      "via": "vap",
+      "model": "people"
     }
   }
 }
