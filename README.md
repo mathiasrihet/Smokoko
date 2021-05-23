@@ -84,7 +84,7 @@ npm start
 NB: Pour que les tamagotchis puissent s'afficher, il faut retourner dans Strapi,dans la collection Tamagotchis et associer 3 images à chaque tamagotchi (ch1,ch2,ch3)
 
 ### Lancement de l'application
-http://localhost:3000/ par défaut
+http://localhost:3000/ par défaut  
 Dans un nouveau terminal
 ```
 cd tama_repository
