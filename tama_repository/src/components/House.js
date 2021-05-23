@@ -14,7 +14,6 @@ import  './styles/House.css';
 class House extends React.Component {
     constructor(props){
         super(props);
-        //Récupérer données depuis API pour les mettre dans le state
 
         let d = new Date();
 
@@ -25,14 +24,19 @@ class House extends React.Component {
             decreaseRateHunger : 25,
             decreaseRatePlay : 25,
             lastUpdateTime : d.getTime(),
-            speed : 1,
             feeling : "normal",
+
+            //Increase to make game's time goes faster (speed 60 set 1 real minute equal to 1 hour, 360 to get 1s = 1H)
+            //Still not fully realistic
+            speed : 1,
         };
 
+        //Test if the current user exist in the API
         API.get('/People', {params : {pseudo : this.props.currentUser}})
             .then(resp =>(resp.data.length===1 ? this.initUser():this.initDemo()))
     }
-
+    
+    //Get data from the API
     initUser = ()=>{
         API.get('/People', {params : {pseudo : this.props.currentUser}})
             .then(resp => {
@@ -48,6 +52,7 @@ class House extends React.Component {
             });
     }
 
+    //Set arbitrary data
     initDemo = ()=>{
         this.setState({objnic : 2,
             qtnic : 2,
