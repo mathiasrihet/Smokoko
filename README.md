@@ -2,6 +2,8 @@
 
 Dépôt contenant tous les éléments nécessaires au lancement d'un prototype de l'application Smokoko (E-Santé & IoT)
 
+Luc Pinot - Erwan Plantec - Mathias Rihet - Mickael Zlatkov
+
 ---
 ## Liste des éléments
 
