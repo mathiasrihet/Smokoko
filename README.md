@@ -93,4 +93,4 @@ cd tama_repository
 npm start
 ```
 
-Il suffit ensuite de se log avec le pseudo d'un des utilisateurs généré précédemment dans Strapi
+Il suffit ensuite de se log avec le pseudo d'un des utilisateurs générés précédemment dans Strapi
